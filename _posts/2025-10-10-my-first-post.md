@@ -18,7 +18,9 @@ tags: [jekyll, chirpy, demo]
 
 ---
 
-![My Screenshot] <img width="1919" height="914" alt="image" src="https://github.com/user-attachments/assets/93ecc503-8257-4d5a-9c9c-49da50170fb4" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/93ecc503-8257-4d5a-9c9c-49da50170fb4" alt="Screenshot" width="80%">
+</p>
 
 ## ✨ Markdown cơ bản
 
