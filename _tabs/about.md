@@ -8,30 +8,28 @@ permalink: /about/
 
 ## About Me
 
-- My name is **Duy Tran**, a **Pentester & Security Researcher** based in Vietnam.  
-- I specialize in **Red Team operations, vulnerability assessment, and adversary simulation**, with a growing interest in **Blue Team methodologies** and **detection engineering**.  
-- I enjoy **breaking systems** to understand them deeply — and then **helping teams defend better** through actionable insights.  
-- My current focus includes **offensive tool development**, **OSINT automation**, and **attack surface mapping**.  
-- I believe a good attacker should also understand defense — because knowing how detection works makes your attack smarter.
+
+
+
+-Hi — I’m [Tran Khanh Duy], a final-year Information Technology student at [Saigon Technology University]. I maintain an active practice routine on platforms like TryHackMe  build home labs
+-and take part in CTFs. My skillset spans reconnaissance and web app testing (OWASP Top 10) as well as defensive awareness — I know how incidents surface in logs and how mitigation workflows
+-operate. I’m seeking an internship in penetration testing to turn hands-on practice into impactful, team-based experience.
+-I have an enermous interest in Penetration Testing, Offensive Security.
 
 ---
 
 ## Licenses & Certifications
 
-- [TryHackMe: Offensive Pentesting](https://tryhackme.com/)
-- [Hack The Box: Certified Tier II](https://app.hackthebox.com/)
-- [eLearnSecurity: eCPPTv2](https://elearnsecurity.com/)
-- [INE: Web Application Pentesting Professional](https://ine.com/)
-- [Blue Team Labs Online: Detection Fundamentals](https://blueteamlabs.online/) *(in progress)*
+- [TryHackMe: Red Teaming](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-IHR8ZG35BG.pdf)
+- [TryHackMe: Jr Penetration Tester](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-G6DMYVUIQD.pdf)
+- [TryHackMe: Web Fundamentals](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-KHQKPOUDWM.pdf)
 
 ---
 
 ## My Profiles
 
-- [TryHackMe](https://tryhackme.com/p/MrDarkRoot)
-- [Hack The Box](https://app.hackthebox.com/profile/yourname)
+- [TryHackMe](https://tryhackme.com/p/biusa)
 - [GitHub](https://github.com/MrDarkRoot)
-- [Blue Team Labs](https://blueteamlabs.online/profile/yourname)
 
 ---
 
@@ -43,7 +41,7 @@ You can find me on:
 - [Twitter / X](https://twitter.com/mrdarkroot)
 - [GitHub](https://github.com/MrDarkRoot)
 
-📫 **Email:** `mrdarkroot@example.com`
+📫 **Email:** `duytran22cyberstudent@gmail.com`
 
 ---
 
