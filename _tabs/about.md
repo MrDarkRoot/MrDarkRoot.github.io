@@ -11,10 +11,9 @@ permalink: /about/
 
 
 
--Hi — I’m [Tran Khanh Duy], a final-year Information Technology student at [Saigon Technology University]. I maintain an active practice routine on platforms like TryHackMe  build home labs
--and take part in CTFs. My skillset spans reconnaissance and web app testing (OWASP Top 10) as well as defensive awareness — I know how incidents surface in logs and how mitigation workflows
--operate. I’m seeking an internship in penetration testing to turn hands-on practice into impactful, team-based experience.
--I have an enermous interest in Penetration Testing, Offensive Security.
+-Hi — I’m [Tran Khanh Duy], a final-year Information Technology student at [Saigon Technology University]. 
+-I maintain an active practice routine on platforms like TryHackMe  build home labs and take part in CTFs.
+-My skillset spans reconnaissance and web app testing (OWASP Top 10) as well as defensive awareness.
 
 ---
 
