@@ -20,7 +20,7 @@ This is my write-up — **biusa_mrdarkroot** — for the **"Whats Your Name?"** 
 ---
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/93ecc503-8257-4d5a-9c9c-49da50170fb4" alt="Screenshot-demo" width="80%">
+  <img src="https://github.com/user-attachments/assets/8384343b-d4ab-43f8-a2e2-f583c9ec0944" alt="Screenshot-demo" width="80%">
 </p>
 
 ---
@@ -57,11 +57,22 @@ Typical result: ports **22 (SSH)**, **80 (HTTP)**, **8081 (HTTP)** are open.
 
 > Replace `<KALI_IP>` with your Kali machine IP.
 
+<img width="942" height="442" alt="image"  />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a4d39333-f37c-437c-af36-d1e4c93a4f6f" alt="Screenshot-demo" width="80%">
+</p>
+
+
 - On Kali, run a simple HTTP server to listen for incoming requests:
 
 ```bash
 python3 -m http.server 1337
 ```
+<img width="946" height="158" alt="image"  />
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8473196e-c855-4b7c-b755-88f365a84433" alt="Screenshot-demo" width="80%">
+</p>
 
 If a moderator or another privileged user views the registration details containing the payload, their browser will make a request to your server including their cookies in the URL. You will see the cookie value in the server logs.
 
@@ -95,21 +106,10 @@ gobuster dir -u http://login.worldwap.thm -w /usr/share/wordlists/dirbuster/dire
 - Obtained the **Moderator flag** via stored XSS + session hijacking.  
 - Enumerated hidden files to find admin credentials → logged in as admin → obtained the **Admin flag**.
 
----
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9b027f7f-cb9b-41ea-b42d-4db240ee3c4b" alt="Screenshot-demo" width="80%">
+</p>
 
-## ⚠️ Ethics & technical notes
-
-- These steps should only be performed in a **legal, authorized lab**. Do **not** apply them to systems you do not have permission to test.  
-- When reporting vulnerabilities, check for proper input escaping/encoding, Content Security Policy (CSP), and cookie protections (`HttpOnly`, `Secure`, `SameSite`) to advise on remediation.
-
----
-
-## 💡 Commit instructions (if you want to save this as a Jekyll post)
-
-- Create a file named like `2025-10-16-whats-your-name-writeup.md` and paste this content (front-matter included).  
-- Push to your repo. GitHub Pages / Jekyll will build automatically (usually within 1–2 minutes).
-
----
 
 ## 🌐 Suggested screenshots to include
 
