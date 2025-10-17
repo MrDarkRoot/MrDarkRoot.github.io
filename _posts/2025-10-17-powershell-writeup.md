@@ -1,5 +1,5 @@
 ---
-title: "Write-up:Hacking with powershell (TryHackMe) — biusa_mrdarkroot"
+title: "Write-up:Hacking with powershell (TryHackMe)"
 date: 2025-10-17 20:00:00 +0700
 categories: [CTF, Writeup, Windows, PowerShell]
 tags: [powershell, windows, enumeration, scripting, tryhackme]
