@@ -1,5 +1,5 @@
 ---
-title: "Write-up: Net Sec Challenge — Network Security (TryHackMe) — biusa_mrdarkroot"
+title: "Write-up: Net Sec Challenge — Network Security (TryHackMe)"
 date: 2025-07-29 12:00:00 +0700
 categories: [CTF, Writeup, Network Security]
 tags: [tryhackme, networkscan, nmap, hydra, telnet,curl]
