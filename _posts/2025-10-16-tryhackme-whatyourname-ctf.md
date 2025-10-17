@@ -20,7 +20,7 @@ This is my write-up — **biusa_mrdarkroot** — for the **"Whats Your Name?"** 
 ---
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8384343b-d4ab-43f8-a2e2-f583c9ec0944" alt="Screenshot-demo" width="80%">
+  <img src="https://github.com/user-attachments/assets/70742578-8746-428f-8674-614b9a7a2da8" alt="Screenshot-demo" width="80%">
 </p>
 
 ---
