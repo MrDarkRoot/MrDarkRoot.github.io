@@ -1,5 +1,5 @@
 ---
-title: "Write-up: Whats Your Name? (TryHackMe) — biusa_mrdarkroot"
+title: "Write-up: Whats Your Name? (TryHackMe)"
 date: 2025-10-16 20:00:00 +0700
 categories: [CTF, Writeup]
 tags: [tryhackme, ctf, xss, session-hijack, websec]
