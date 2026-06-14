@@ -23,6 +23,138 @@
             margin: 0 auto;
         }
 
+        /* LOGIN PAGE STYLES */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 9999;
+        }
+
+        .login-container.hidden {
+            display: none;
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .login-box .subtitle {
+            color: #999;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: 0.3s;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .login-error {
+            background: #fed7d7;
+            color: #742a2a;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        .login-info {
+            background: #bee3f8;
+            color: #2c5282;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .login-info strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* MAIN CONTENT STYLES */
+        .main-wrapper.hidden {
+            display: none;
+        }
+
         .header {
             background: white;
             padding: 20px;
@@ -45,17 +177,9 @@
             align-items: center;
         }
 
-        .auth-section input {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            width: 250px;
-        }
-
         .auth-section button {
             padding: 8px 16px;
-            background: #667eea;
+            background: #f56565;
             color: white;
             border: none;
             border-radius: 4px;
@@ -64,7 +188,12 @@
         }
 
         .auth-section button:hover {
-            background: #764ba2;
+            background: #e53e3e;
+        }
+
+        .user-info {
+            color: #666;
+            font-size: 14px;
         }
 
         .main-content {
@@ -122,6 +251,12 @@
 
         .section.active {
             display: block;
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 22px;
         }
 
         .form-group {
@@ -226,21 +361,6 @@
             margin-bottom: 8px;
         }
 
-        .post-card .post-tags {
-            display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
-        }
-
-        .post-tag {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-        }
-
         .post-actions {
             display: flex;
             gap: 10px;
@@ -291,25 +411,6 @@
             display: block;
         }
 
-        .preview {
-            background: #f7fafc;
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 20px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .preview h3 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .preview-content {
-            color: #666;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -320,169 +421,199 @@
                 gap: 15px;
             }
 
-            .auth-section {
-                width: 100%;
-                flex-direction: column;
-            }
-
-            .auth-section input {
-                width: 100%;
+            .login-box {
+                margin: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🔐 Admin Panel - CVE Writeup Manager</h1>
-            <div class="auth-section">
-                <input 
-                    type="password" 
-                    id="tokenInput" 
-                    placeholder="GitHub Personal Access Token (ghp_...)"
-                    autocomplete="off"
-                >
-                <button onclick="setToken()">🔓 Login</button>
-                <button onclick="logout()" style="background: #f56565;">🔒 Logout</button>
+    <!-- LOGIN PAGE -->
+    <div id="loginContainer" class="login-container">
+        <div class="login-box">
+            <h1>🔐 Admin Panel</h1>
+            <p class="subtitle">CVE Writeup Manager</p>
+            
+            <div id="loginError" class="login-error"></div>
+
+            <form class="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>👤 Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        placeholder="admin"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>🔑 Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="••••••••"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="login-button">🔓 Login</button>
+            </form>
+
+            <div class="login-info">
+                <strong>💡 Default:</strong>
+                Username: <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 3px;">admin</code><br>
+                Password: <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 3px;">admin</code><br>
+                <small style="margin-top: 10px; display: block; color: #1a365d;">⚠️ Đổi mật khẩu ngay sau lần đăng nhập đầu tiên!</small>
             </div>
         </div>
+    </div>
 
-        <div class="main-content">
-            <div class="sidebar">
-                <h2>📋 Menu</h2>
-                <button onclick="switchSection('create')" class="active">✏️ Viết Bài Mới</button>
-                <button onclick="switchSection('list')">📚 Danh Sách Bài</button>
-                <button onclick="switchSection('guide')">📖 Hướng Dẫn</button>
+    <!-- MAIN CONTENT -->
+    <div id="mainWrapper" class="main-wrapper hidden">
+        <div class="container">
+            <div class="header">
+                <h1>🔐 Admin Panel - CVE Writeup Manager</h1>
+                <div class="auth-section">
+                    <div class="user-info">👤 <span id="currentUser"></span></div>
+                    <button onclick="handleLogout()">🔒 Logout</button>
+                </div>
             </div>
 
-            <div class="content">
-                <div id="status" class="status"></div>
+            <div class="main-content">
+                <div class="sidebar">
+                    <h2>📋 Menu</h2>
+                    <button onclick="switchSection('create')" class="active">✏️ Viết Bài Mới</button>
+                    <button onclick="switchSection('list')">📚 Danh Sách Bài</button>
+                    <button onclick="switchSection('settings')">⚙️ Cài Đặt</button>
+                </div>
 
-                <!-- Create Section -->
-                <div id="create" class="section active">
-                    <h2>✏️ Viết Bài Mới</h2>
-                    <form onsubmit="submitPost(event)">
-                        <div class="form-group">
-                            <label>Tiêu Đề Bài Viết *</label>
-                            <input 
-                                type="text" 
-                                id="title" 
-                                placeholder="CVE-2024-1234: SQL Injection Bypass"
-                                required
-                            >
-                        </div>
+                <div class="content">
+                    <div id="status" class="status"></div>
 
-                        <div class="form-group">
-                            <label>Phân Loại (Categories) *</label>
-                            <input 
-                                type="text" 
-                                id="categories" 
-                                placeholder="Security, CVE"
-                                required
-                            >
-                            <small style="color: #999;">Phân tách bằng dấu phẩy</small>
-                        </div>
+                    <!-- Create Section -->
+                    <div id="create" class="section active">
+                        <h2>✏️ Viết Bài Mới</h2>
+                        <form onsubmit="submitPost(event)">
+                            <div class="form-group">
+                                <label>Tiêu Đề Bài Viết *</label>
+                                <input 
+                                    type="text" 
+                                    id="title" 
+                                    placeholder="CVE-2024-1234: SQL Injection Bypass"
+                                    required
+                                >
+                            </div>
 
-                        <div class="form-group">
-                            <label>Tags *</label>
-                            <input 
-                                type="text" 
-                                id="tags" 
-                                placeholder="sqli, rce, writeup"
-                                required
-                            >
-                            <small style="color: #999;">Phân tách bằng dấu phẩy</small>
-                        </div>
+                            <div class="form-group">
+                                <label>Phân Loại (Categories) *</label>
+                                <input 
+                                    type="text" 
+                                    id="categories" 
+                                    placeholder="Security, CVE"
+                                    required
+                                >
+                                <small style="color: #999;">Phân tách bằng dấu phẩy</small>
+                            </div>
 
-                        <div class="form-group">
-                            <label>Nội Dung Bài Viết (Markdown) *</label>
-                            <textarea 
-                                id="content" 
-                                placeholder="# Tiêu Đề
+                            <div class="form-group">
+                                <label>Tags *</label>
+                                <input 
+                                    type="text" 
+                                    id="tags" 
+                                    placeholder="sqli, rce, writeup"
+                                    required
+                                >
+                                <small style="color: #999;">Phân tách bằng dấu phẩy</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nội Dung Bài Viết (Markdown) *</label>
+                                <textarea 
+                                    id="content" 
+                                    placeholder="# Tiêu Đề
 
 ## Phân tích
 
 Viết nội dung ở đây..."
-                                required
-                            ></textarea>
-                        </div>
+                                    required
+                                ></textarea>
+                            </div>
 
-                        <div class="form-actions">
-                            <button type="submit" class="btn-publish">🚀 Publish</button>
-                            <button type="button" onclick="saveDraft()" class="btn-draft">📝 Save as Draft</button>
-                            <button type="button" onclick="resetForm()" class="btn-cancel">❌ Clear</button>
-                        </div>
-                    </form>
-
-                    <div class="preview" style="display: none;" id="preview">
-                        <h3>👀 Preview</h3>
-                        <div class="preview-content" id="previewContent"></div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-publish">🚀 Publish</button>
+                                <button type="button" onclick="saveDraft()" class="btn-draft">📝 Save Draft</button>
+                                <button type="button" onclick="resetForm()" class="btn-cancel">❌ Clear</button>
+                            </div>
+                        </form>
                     </div>
-                </div>
 
-                <!-- List Section -->
-                <div id="list" class="section">
-                    <h2>📚 Danh Sách Bài Viết</h2>
-                    <p style="color: #999; margin-bottom: 20px;">Click vào bài để chỉnh sửa</p>
-                    <div class="posts-list" id="postsList">
-                        <p style="color: #999; text-align: center; padding: 40px 20px;">
-                            Login để xem danh sách bài viết
-                        </p>
+                    <!-- List Section -->
+                    <div id="list" class="section">
+                        <h2>📚 Danh Sách Bài Viết</h2>
+                        <p style="color: #999; margin-bottom: 20px;">Click vào bài để chỉnh sửa</p>
+                        <div class="posts-list" id="postsList">
+                            <p style="color: #999; text-align: center; padding: 40px 20px;">
+                                Loading...
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Guide Section -->
-                <div id="guide" class="section">
-                    <h2>📖 Hướng Dẫn Sử Dụng</h2>
-                    <div style="line-height: 1.8; color: #666;">
-                        <h3 style="color: #333; margin: 20px 0 10px 0;">🔑 1. Tạo GitHub Personal Access Token</h3>
-                        <ol style="margin-left: 20px;">
-                            <li>Vào <strong>Settings → Developer settings → Personal access tokens</strong></li>
-                            <li>Chọn <strong>Tokens (classic)</strong></li>
-                            <li>Click <strong>Generate new token</strong></li>
-                            <li>Chọn quyền: <strong>repo</strong> (full control of private repositories)</li>
-                            <li>Copy token và dán vào ô "GitHub Personal Access Token"</li>
-                        </ol>
+                    <!-- Settings Section -->
+                    <div id="settings" class="section">
+                        <h2>⚙️ Cài Đặt</h2>
+                        <div style="line-height: 1.8; color: #666;">
+                            <h3 style="color: #333; margin-bottom: 15px;">🔑 GitHub Personal Access Token</h3>
+                            <div class="form-group">
+                                <label>Token</label>
+                                <input 
+                                    type="password" 
+                                    id="githubToken" 
+                                    placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                                    autocomplete="off"
+                                >
+                                <small style="color: #999;">Token được lưu riêng tư trong browser (localStorage)</small>
+                                <button onclick="saveGithubToken()" style="margin-top: 10px; padding: 8px 16px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">💾 Save Token</button>
+                            </div>
 
-                        <h3 style="color: #333; margin: 20px 0 10px 0;">📝 2. Viết Bài Mới</h3>
-                        <ul style="margin-left: 20px;">
-                            <li>Nhập <strong>Tiêu Đề</strong> bài viết</li>
-                            <li>Chọn <strong>Categories</strong> (ví dụ: Security, CVE)</li>
-                            <li>Thêm <strong>Tags</strong> (ví dụ: sqli, rce, writeup)</li>
-                            <li>Viết nội dung bằng <strong>Markdown</strong></li>
-                            <li>Click <strong>🚀 Publish</strong> để công bố</li>
-                        </ul>
+                            <hr style="margin: 30px 0; border: none; border-top: 1px solid #e2e8f0;">
 
-                        <h3 style="color: #333; margin: 20px 0 10px 0;">📚 3. Quản Lý Bài Viết</h3>
-                        <ul style="margin-left: 20px;">
-                            <li>Vào tab <strong>📚 Danh Sách Bài</strong></li>
-                            <li>Click bài để chỉnh sửa</li>
-                            <li>Click nút <strong>🗑️ Delete</strong> để xóa</li>
-                        </ul>
+                            <h3 style="color: #333; margin-bottom: 15px;">📖 Hướng Dẫn Tạo Token</h3>
+                            <ol style="margin-left: 20px; color: #666;">
+                                <li>Vào <strong><a href="https://github.com/settings/tokens" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/settings/tokens</a></strong></li>
+                                <li>Chọn <strong>Generate new token (classic)</strong></li>
+                                <li>Tên: <code style="background: #f7fafc; padding: 2px 6px; border-radius: 3px;">blog-admin</code></li>
+                                <li>Scope: Chọn <strong>repo</strong> (full control of private repositories)</li>
+                                <li>Copy token và dán vào ô trên</li>
+                                <li>Click <strong>💾 Save Token</strong></li>
+                            </ol>
 
-                        <h3 style="color: #333; margin: 20px 0 10px 0;">📋 Định Dạng Markdown</h3>
-                        <pre style="background: #f7fafc; padding: 10px; border-radius: 4px; overflow-x: auto;">
-# Tiêu Đề Lớn
-## Tiêu Đề Vừa
-### Tiêu Đề Nhỏ
+                            <hr style="margin: 30px 0; border: none; border-top: 1px solid #e2e8f0;">
 
-**Bold** | *Italic* | ~~Strikethrough~~
+                            <h3 style="color: #333; margin-bottom: 15px;">👤 Đổi Mật Khẩu Đăng Nhập</h3>
+                            <div class="form-group">
+                                <label>Tên Đăng Nhập</label>
+                                <input 
+                                    type="text" 
+                                    id="adminUsername" 
+                                    placeholder="admin"
+                                >
+                            </div>
 
-- Item 1
-- Item 2
+                            <div class="form-group">
+                                <label>Mật Khẩu Mới</label>
+                                <input 
+                                    type="password" 
+                                    id="adminPassword" 
+                                    placeholder="••••••••"
+                                    autocomplete="off"
+                                >
+                                <small style="color: #999;">Để trống nếu không muốn đổi</small>
+                            </div>
 
-1. Numbered 1
-2. Numbered 2
-
-\`\`\`bash
-code block
-\`\`\`
-
-[Link](https://example.com)
-                        </pre>
-
-                        <div style="background: #c6f6d5; padding: 15px; border-radius: 4px; margin-top: 20px; color: #22543d;">
-                            <strong>✅ Lưu Ý:</strong> Mỗi bài viết tự động được đặt tên theo định dạng YYYY-MM-DD-title.md và lưu vào thư mục <code>_posts/</code>
+                            <button onclick="updateLoginCredentials()" style="padding: 10px 20px; background: #48bb78; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">💾 Cập Nhật Thông Tin</button>
                         </div>
                     </div>
                 </div>
@@ -493,35 +624,90 @@ code block
     <script>
         const GITHUB_API = 'https://api.github.com';
         const REPO = 'MrDarkRoot/MrDarkRoot.github.io';
-        let token = localStorage.getItem('github_token') || '';
+        const LOGIN_KEY = 'admin_login';
+        const TOKEN_KEY = 'github_token';
+        
+        let isLoggedIn = false;
+        let currentUser = '';
+        let githubToken = '';
         let allPosts = [];
 
-        // Initialize
+        // Initialize on load
         document.addEventListener('DOMContentLoaded', () => {
-            if (token) {
-                document.getElementById('tokenInput').value = '***hidden***';
-                loadPosts();
-            }
+            checkLogin();
+            loadGithubToken();
         });
 
-        function setToken() {
-            const input = document.getElementById('tokenInput');
-            if (input.value && input.value !== '***hidden***') {
-                token = input.value;
-                localStorage.setItem('github_token', token);
-                input.value = '***hidden***';
-                showStatus('✅ Token saved successfully!', 'success');
+        function checkLogin() {
+            const loginData = localStorage.getItem(LOGIN_KEY);
+            if (loginData) {
+                const data = JSON.parse(loginData);
+                if (data.isLoggedIn) {
+                    isLoggedIn = true;
+                    currentUser = data.username;
+                    showMainContent();
+                    loadPosts();
+                    return;
+                }
+            }
+            showLoginPage();
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorDiv = document.getElementById('loginError');
+
+            if (!username || !password) {
+                errorDiv.textContent = '❌ Vui lòng nhập tên đăng nhập và mật khẩu';
+                errorDiv.classList.add('show');
+                return;
+            }
+
+            // Get stored credentials or use defaults
+            let storedUsername = localStorage.getItem('admin_username') || 'admin';
+            let storedPassword = localStorage.getItem('admin_password') || 'admin';
+
+            if (username === storedUsername && password === storedPassword) {
+                // Login successful
+                const loginData = {
+                    isLoggedIn: true,
+                    username: username,
+                    timestamp: new Date().getTime()
+                };
+                localStorage.setItem(LOGIN_KEY, JSON.stringify(loginData));
+                isLoggedIn = true;
+                currentUser = username;
+                showMainContent();
                 loadPosts();
+                errorDiv.classList.remove('show');
+            } else {
+                errorDiv.textContent = '❌ Tên đăng nhập hoặc mật khẩu không đúng';
+                errorDiv.classList.add('show');
             }
         }
 
-        function logout() {
-            token = '';
-            localStorage.removeItem('github_token');
-            document.getElementById('tokenInput').value = '';
-            allPosts = [];
-            document.getElementById('postsList').innerHTML = '<p style="color: #999;">Logged out</p>';
-            showStatus('🔒 Logged out', 'success');
+        function handleLogout() {
+            if (confirm('Bạn chắc chắn muốn đăng xuất?')) {
+                localStorage.removeItem(LOGIN_KEY);
+                isLoggedIn = false;
+                currentUser = '';
+                showLoginPage();
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            }
+        }
+
+        function showLoginPage() {
+            document.getElementById('loginContainer').classList.remove('hidden');
+            document.getElementById('mainWrapper').classList.add('hidden');
+        }
+
+        function showMainContent() {
+            document.getElementById('loginContainer').classList.add('hidden');
+            document.getElementById('mainWrapper').classList.remove('hidden');
+            document.getElementById('currentUser').textContent = currentUser;
         }
 
         function switchSection(section) {
@@ -532,12 +718,50 @@ code block
 
             if (section === 'list') {
                 loadPosts();
+            } else if (section === 'settings') {
+                loadSettings();
             }
         }
 
-        async function loadPosts() {
+        function loadGithubToken() {
+            githubToken = localStorage.getItem(TOKEN_KEY) || '';
+        }
+
+        function saveGithubToken() {
+            const token = document.getElementById('githubToken').value.trim();
             if (!token) {
-                showStatus('⚠️ Please login first', 'error');
+                showStatus('❌ Vui lòng nhập token', 'error');
+                return;
+            }
+            localStorage.setItem(TOKEN_KEY, token);
+            githubToken = token;
+            showStatus('✅ Token đã được lưu!', 'success');
+            document.getElementById('githubToken').value = '';
+        }
+
+        function loadSettings() {
+            const storedUsername = localStorage.getItem('admin_username') || 'admin';
+            document.getElementById('adminUsername').value = storedUsername;
+            document.getElementById('githubToken').value = '';
+        }
+
+        function updateLoginCredentials() {
+            const newUsername = document.getElementById('adminUsername').value.trim();
+            const newPassword = document.getElementById('adminPassword').value.trim();
+
+            if (newUsername) {
+                localStorage.setItem('admin_username', newUsername);
+            }
+            if (newPassword) {
+                localStorage.setItem('admin_password', newPassword);
+            }
+
+            showStatus('✅ Cập nhật thành công!', 'success');
+        }
+
+        async function loadPosts() {
+            if (!githubToken) {
+                document.getElementById('postsList').innerHTML = '<p style="color: #f56565; text-align: center; padding: 40px 20px;"><strong>❌ Chưa cài đặt GitHub Token</strong><br><br>Vào tab ⚙️ Cài Đặt để thêm token</p>';
                 return;
             }
 
@@ -547,7 +771,7 @@ code block
                     `${GITHUB_API}/repos/${REPO}/contents/_posts`,
                     {
                         headers: {
-                            'Authorization': `token ${token}`,
+                            'Authorization': `token ${githubToken}`,
                             'Accept': 'application/vnd.github.v3+json'
                         }
                     }
@@ -556,23 +780,23 @@ code block
                 if (response.status === 404) {
                     allPosts = [];
                     updatePostsList();
-                    showStatus('📚 No posts yet. Create your first one!', 'success');
+                    showStatus('📚 Không có bài viết. Tạo bài đầu tiên!', 'success');
                     return;
                 }
 
                 const data = await response.json();
-                allPosts = data.filter(file => file.name.endsWith('.md'));
+                allPosts = data.filter(file => file.name.endsWith('.md')).sort((a, b) => b.name.localeCompare(a.name));
                 updatePostsList();
                 showStatus('✅ Posts loaded', 'success');
             } catch (error) {
-                showStatus('❌ Error loading posts: ' + error.message, 'error');
+                showStatus('❌ Lỗi: ' + error.message, 'error');
             }
         }
 
         function updatePostsList() {
             const list = document.getElementById('postsList');
             if (allPosts.length === 0) {
-                list.innerHTML = '<p style="color: #999; text-align: center; padding: 40px 20px;">No posts yet</p>';
+                list.innerHTML = '<p style="color: #999; text-align: center; padding: 40px 20px;">Không có bài viết nào</p>';
                 return;
             }
 
@@ -595,8 +819,8 @@ code block
         }
 
         async function editPost(filename) {
-            if (!token) {
-                showStatus('⚠️ Please login first', 'error');
+            if (!githubToken) {
+                showStatus('❌ Chưa cài đặt GitHub Token', 'error');
                 return;
             }
 
@@ -606,7 +830,7 @@ code block
                     `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
                     {
                         headers: {
-                            'Authorization': `token ${token}`,
+                            'Authorization': `token ${githubToken}`,
                             'Accept': 'application/vnd.github.v3.raw'
                         }
                     }
@@ -615,7 +839,6 @@ code block
                 const content = await response.text();
                 const lines = content.split('\n');
                 
-                // Parse front matter
                 let endFrontMatter = 0;
                 for (let i = 1; i < lines.length; i++) {
                     if (lines[i] === '---') {
@@ -627,7 +850,6 @@ code block
                 const frontMatter = lines.slice(1, endFrontMatter).join('\n');
                 const body = lines.slice(endFrontMatter + 1).join('\n').trim();
 
-                // Extract fields
                 const titleMatch = frontMatter.match(/title:\s*"?([^"\n]+)"?/);
                 const categoriesMatch = frontMatter.match(/categories:\s*\[(.*?)\]/);
                 const tagsMatch = frontMatter.match(/tags:\s*\[(.*?)\]/);
@@ -638,31 +860,32 @@ code block
                 document.getElementById('content').value = body;
 
                 switchSection('create');
-                document.querySelector('.form-actions .btn-publish').textContent = '🔄 Update Post';
-                document.querySelector('.form-actions .btn-publish').onclick = () => updatePost(event, filename);
+                const publishBtn = document.querySelector('.form-actions .btn-publish');
+                publishBtn.textContent = '🔄 Update Post';
+                publishBtn.dataset.filename = filename;
+                publishBtn.onclick = (e) => updatePost(e, filename);
                 
                 showStatus('✅ Post loaded for editing', 'success');
             } catch (error) {
-                showStatus('❌ Error loading post: ' + error.message, 'error');
+                showStatus('❌ Lỗi: ' + error.message, 'error');
             }
         }
 
         async function deletePost(filename) {
-            if (!token) {
-                showStatus('⚠️ Please login first', 'error');
+            if (!githubToken) {
+                showStatus('❌ Chưa cài đặt GitHub Token', 'error');
                 return;
             }
 
-            if (!confirm(`Are you sure you want to delete "${filename}"?`)) return;
+            if (!confirm(`Bạn chắc chắn muốn xóa "${filename}"?`)) return;
 
             showStatus('🗑️ Deleting post...', 'loading');
             try {
-                // Get file SHA first
                 const response = await fetch(
                     `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
                     {
                         headers: {
-                            'Authorization': `token ${token}`,
+                            'Authorization': `token ${githubToken}`,
                             'Accept': 'application/vnd.github.v3+json'
                         }
                     }
@@ -670,13 +893,12 @@ code block
 
                 const data = await response.json();
 
-                // Delete file
                 await fetch(
                     `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
                     {
                         method: 'DELETE',
                         headers: {
-                            'Authorization': `token ${token}`,
+                            'Authorization': `token ${githubToken}`,
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
@@ -686,20 +908,19 @@ code block
                     }
                 );
 
-                showStatus('✅ Post deleted successfully!', 'success');
+                showStatus('✅ Bài viết đã được xóa!', 'success');
                 loadPosts();
             } catch (error) {
-                showStatus('❌ Error deleting post: ' + error.message, 'error');
+                showStatus('❌ Lỗi: ' + error.message, 'error');
             }
         }
 
         async function submitPost(event) {
             event.preventDefault();
-            if (!token) {
-                showStatus('⚠️ Please login first', 'error');
+            if (!githubToken) {
+                showStatus('❌ Chưa cài đặt GitHub Token', 'error');
                 return;
             }
-
             await createPost();
         }
 
@@ -710,7 +931,7 @@ code block
             const content = document.getElementById('content').value.trim();
 
             if (!title || !categories || !tags || !content) {
-                showStatus('❌ Please fill all required fields', 'error');
+                showStatus('❌ Vui lòng điền tất cả các trường', 'error');
                 return;
             }
 
@@ -741,7 +962,7 @@ ${content}`;
                     {
                         method: 'PUT',
                         headers: {
-                            'Authorization': `token ${token}`,
+                            'Authorization': `token ${githubToken}`,
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
@@ -751,18 +972,18 @@ ${content}`;
                     }
                 );
 
-                showStatus(`✅ Post published! Visit https://mrdarkroot.github.io/posts/${slug}/`, 'success');
+                showStatus(`✅ Bài viết đã được publish! Visit https://mrdarkroot.github.io/posts/${slug}/`, 'success');
                 resetForm();
                 loadPosts();
             } catch (error) {
-                showStatus('❌ Error publishing post: ' + error.message, 'error');
+                showStatus('❌ Lỗi: ' + error.message, 'error');
             }
         }
 
         async function updatePost(event, filename) {
             event.preventDefault();
-            if (!token) {
-                showStatus('⚠️ Please login first', 'error');
+            if (!githubToken) {
+                showStatus('❌ Chưa cài đặt GitHub Token', 'error');
                 return;
             }
 
@@ -773,12 +994,11 @@ ${content}`;
 
             showStatus('🔄 Updating post...', 'loading');
             try {
-                // Get current SHA
                 const response = await fetch(
                     `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
                     {
                         headers: {
-                            'Authorization': `token ${token}`,
+                            'Authorization': `token ${githubToken}`,
                             'Accept': 'application/vnd.github.v3+json'
                         }
                     }
@@ -803,7 +1023,7 @@ ${content}`;
                     {
                         method: 'PUT',
                         headers: {
-                            'Authorization': `token ${token}`,
+                            'Authorization': `token ${githubToken}`,
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
@@ -814,11 +1034,11 @@ ${content}`;
                     }
                 );
 
-                showStatus('✅ Post updated successfully!', 'success');
+                showStatus('✅ Bài viết đã được cập nhật!', 'success');
                 resetForm();
                 loadPosts();
             } catch (error) {
-                showStatus('❌ Error updating post: ' + error.message, 'error');
+                showStatus('❌ Lỗi: ' + error.message, 'error');
             }
         }
 
@@ -838,8 +1058,9 @@ ${content}`;
             document.getElementById('categories').value = '';
             document.getElementById('tags').value = '';
             document.getElementById('content').value = '';
-            document.querySelector('.form-actions .btn-publish').textContent = '🚀 Publish';
-            document.querySelector('.form-actions .btn-publish').onclick = () => submitPost(event);
+            const publishBtn = document.querySelector('.form-actions .btn-publish');
+            publishBtn.textContent = '🚀 Publish';
+            publishBtn.onclick = () => submitPost(event);
         }
 
         function showStatus(message, type) {
@@ -855,13 +1076,15 @@ ${content}`;
 
         // Load draft if exists
         window.addEventListener('load', () => {
-            const draft = localStorage.getItem('draft_post');
-            if (draft) {
-                const parsed = JSON.parse(draft);
-                document.getElementById('title').value = parsed.title || '';
-                document.getElementById('categories').value = parsed.categories || '';
-                document.getElementById('tags').value = parsed.tags || '';
-                document.getElementById('content').value = parsed.content || '';
+            if (isLoggedIn) {
+                const draft = localStorage.getItem('draft_post');
+                if (draft) {
+                    const parsed = JSON.parse(draft);
+                    document.getElementById('title').value = parsed.title || '';
+                    document.getElementById('categories').value = parsed.categories || '';
+                    document.getElementById('tags').value = parsed.tags || '';
+                    document.getElementById('content').value = parsed.content || '';
+                }
             }
         });
     </script>
