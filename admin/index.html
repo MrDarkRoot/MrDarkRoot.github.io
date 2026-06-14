@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - CVE Writeup Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .auth-section {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .auth-section input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 250px;
+        }
+
+        .auth-section button {
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .auth-section button:hover {
+            background: #764ba2;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .sidebar h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .sidebar button:hover {
+            background: #764ba2;
+        }
+
+        .sidebar button.active {
+            background: #764ba2;
+            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.3);
+        }
+
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 300px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .form-actions button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            flex: 1;
+            transition: 0.3s;
+        }
+
+        .btn-publish {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-publish:hover {
+            background: #38a169;
+        }
+
+        .btn-draft {
+            background: #ed8936;
+            color: white;
+        }
+
+        .btn-draft:hover {
+            background: #dd6b20;
+        }
+
+        .btn-cancel {
+            background: #e2e8f0;
+            color: #333;
+        }
+
+        .btn-cancel:hover {
+            background: #cbd5e0;
+        }
+
+        .posts-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .post-card {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #667eea;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .post-card:hover {
+            background: #edf2f7;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .post-card h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .post-card .post-date {
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .post-card .post-tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .post-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .post-actions button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .btn-edit {
+            background: #4299e1;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #f56565;
+            color: white;
+        }
+
+        .status {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .status.success {
+            background: #c6f6d5;
+            color: #22543d;
+            display: block;
+        }
+
+        .status.error {
+            background: #fed7d7;
+            color: #742a2a;
+            display: block;
+        }
+
+        .status.loading {
+            background: #bee3f8;
+            color: #2c5282;
+            display: block;
+        }
+
+        .preview {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .preview h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .preview-content {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .auth-section {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .auth-section input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Admin Panel - CVE Writeup Manager</h1>
+            <div class="auth-section">
+                <input 
+                    type="password" 
+                    id="tokenInput" 
+                    placeholder="GitHub Personal Access Token (ghp_...)"
+                    autocomplete="off"
+                >
+                <button onclick="setToken()">🔓 Login</button>
+                <button onclick="logout()" style="background: #f56565;">🔒 Logout</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <h2>📋 Menu</h2>
+                <button onclick="switchSection('create')" class="active">✏️ Viết Bài Mới</button>
+                <button onclick="switchSection('list')">📚 Danh Sách Bài</button>
+                <button onclick="switchSection('guide')">📖 Hướng Dẫn</button>
+            </div>
+
+            <div class="content">
+                <div id="status" class="status"></div>
+
+                <!-- Create Section -->
+                <div id="create" class="section active">
+                    <h2>✏️ Viết Bài Mới</h2>
+                    <form onsubmit="submitPost(event)">
+                        <div class="form-group">
+                            <label>Tiêu Đề Bài Viết *</label>
+                            <input 
+                                type="text" 
+                                id="title" 
+                                placeholder="CVE-2024-1234: SQL Injection Bypass"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phân Loại (Categories) *</label>
+                            <input 
+                                type="text" 
+                                id="categories" 
+                                placeholder="Security, CVE"
+                                required
+                            >
+                            <small style="color: #999;">Phân tách bằng dấu phẩy</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tags *</label>
+                            <input 
+                                type="text" 
+                                id="tags" 
+                                placeholder="sqli, rce, writeup"
+                                required
+                            >
+                            <small style="color: #999;">Phân tách bằng dấu phẩy</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nội Dung Bài Viết (Markdown) *</label>
+                            <textarea 
+                                id="content" 
+                                placeholder="# Tiêu Đề
+
+## Phân tích
+
+Viết nội dung ở đây..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-publish">🚀 Publish</button>
+                            <button type="button" onclick="saveDraft()" class="btn-draft">📝 Save as Draft</button>
+                            <button type="button" onclick="resetForm()" class="btn-cancel">❌ Clear</button>
+                        </div>
+                    </form>
+
+                    <div class="preview" style="display: none;" id="preview">
+                        <h3>👀 Preview</h3>
+                        <div class="preview-content" id="previewContent"></div>
+                    </div>
+                </div>
+
+                <!-- List Section -->
+                <div id="list" class="section">
+                    <h2>📚 Danh Sách Bài Viết</h2>
+                    <p style="color: #999; margin-bottom: 20px;">Click vào bài để chỉnh sửa</p>
+                    <div class="posts-list" id="postsList">
+                        <p style="color: #999; text-align: center; padding: 40px 20px;">
+                            Login để xem danh sách bài viết
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Guide Section -->
+                <div id="guide" class="section">
+                    <h2>📖 Hướng Dẫn Sử Dụng</h2>
+                    <div style="line-height: 1.8; color: #666;">
+                        <h3 style="color: #333; margin: 20px 0 10px 0;">🔑 1. Tạo GitHub Personal Access Token</h3>
+                        <ol style="margin-left: 20px;">
+                            <li>Vào <strong>Settings → Developer settings → Personal access tokens</strong></li>
+                            <li>Chọn <strong>Tokens (classic)</strong></li>
+                            <li>Click <strong>Generate new token</strong></li>
+                            <li>Chọn quyền: <strong>repo</strong> (full control of private repositories)</li>
+                            <li>Copy token và dán vào ô "GitHub Personal Access Token"</li>
+                        </ol>
+
+                        <h3 style="color: #333; margin: 20px 0 10px 0;">📝 2. Viết Bài Mới</h3>
+                        <ul style="margin-left: 20px;">
+                            <li>Nhập <strong>Tiêu Đề</strong> bài viết</li>
+                            <li>Chọn <strong>Categories</strong> (ví dụ: Security, CVE)</li>
+                            <li>Thêm <strong>Tags</strong> (ví dụ: sqli, rce, writeup)</li>
+                            <li>Viết nội dung bằng <strong>Markdown</strong></li>
+                            <li>Click <strong>🚀 Publish</strong> để công bố</li>
+                        </ul>
+
+                        <h3 style="color: #333; margin: 20px 0 10px 0;">📚 3. Quản Lý Bài Viết</h3>
+                        <ul style="margin-left: 20px;">
+                            <li>Vào tab <strong>📚 Danh Sách Bài</strong></li>
+                            <li>Click bài để chỉnh sửa</li>
+                            <li>Click nút <strong>🗑️ Delete</strong> để xóa</li>
+                        </ul>
+
+                        <h3 style="color: #333; margin: 20px 0 10px 0;">📋 Định Dạng Markdown</h3>
+                        <pre style="background: #f7fafc; padding: 10px; border-radius: 4px; overflow-x: auto;">
+# Tiêu Đề Lớn
+## Tiêu Đề Vừa
+### Tiêu Đề Nhỏ
+
+**Bold** | *Italic* | ~~Strikethrough~~
+
+- Item 1
+- Item 2
+
+1. Numbered 1
+2. Numbered 2
+
+\`\`\`bash
+code block
+\`\`\`
+
+[Link](https://example.com)
+                        </pre>
+
+                        <div style="background: #c6f6d5; padding: 15px; border-radius: 4px; margin-top: 20px; color: #22543d;">
+                            <strong>✅ Lưu Ý:</strong> Mỗi bài viết tự động được đặt tên theo định dạng YYYY-MM-DD-title.md và lưu vào thư mục <code>_posts/</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const GITHUB_API = 'https://api.github.com';
+        const REPO = 'MrDarkRoot/MrDarkRoot.github.io';
+        let token = localStorage.getItem('github_token') || '';
+        let allPosts = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            if (token) {
+                document.getElementById('tokenInput').value = '***hidden***';
+                loadPosts();
+            }
+        });
+
+        function setToken() {
+            const input = document.getElementById('tokenInput');
+            if (input.value && input.value !== '***hidden***') {
+                token = input.value;
+                localStorage.setItem('github_token', token);
+                input.value = '***hidden***';
+                showStatus('✅ Token saved successfully!', 'success');
+                loadPosts();
+            }
+        }
+
+        function logout() {
+            token = '';
+            localStorage.removeItem('github_token');
+            document.getElementById('tokenInput').value = '';
+            allPosts = [];
+            document.getElementById('postsList').innerHTML = '<p style="color: #999;">Logged out</p>';
+            showStatus('🔒 Logged out', 'success');
+        }
+
+        function switchSection(section) {
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.sidebar button').forEach(el => el.classList.remove('active'));
+            document.getElementById(section).classList.add('active');
+            event.target.classList.add('active');
+
+            if (section === 'list') {
+                loadPosts();
+            }
+        }
+
+        async function loadPosts() {
+            if (!token) {
+                showStatus('⚠️ Please login first', 'error');
+                return;
+            }
+
+            showStatus('📥 Loading posts...', 'loading');
+            try {
+                const response = await fetch(
+                    `${GITHUB_API}/repos/${REPO}/contents/_posts`,
+                    {
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    }
+                );
+
+                if (response.status === 404) {
+                    allPosts = [];
+                    updatePostsList();
+                    showStatus('📚 No posts yet. Create your first one!', 'success');
+                    return;
+                }
+
+                const data = await response.json();
+                allPosts = data.filter(file => file.name.endsWith('.md'));
+                updatePostsList();
+                showStatus('✅ Posts loaded', 'success');
+            } catch (error) {
+                showStatus('❌ Error loading posts: ' + error.message, 'error');
+            }
+        }
+
+        function updatePostsList() {
+            const list = document.getElementById('postsList');
+            if (allPosts.length === 0) {
+                list.innerHTML = '<p style="color: #999; text-align: center; padding: 40px 20px;">No posts yet</p>';
+                return;
+            }
+
+            list.innerHTML = allPosts.map(post => {
+                const dateMatch = post.name.match(/^\d{4}-\d{2}-\d{2}/);
+                const date = dateMatch ? dateMatch[0] : 'Unknown';
+                const title = post.name.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace('.md', '').replace(/-/g, ' ');
+                
+                return `
+                    <div class="post-card">
+                        <h3>${title}</h3>
+                        <div class="post-date">📅 ${date}</div>
+                        <div class="post-actions">
+                            <button class="btn-edit" onclick="editPost('${post.name}')">✏️ Edit</button>
+                            <button class="btn-delete" onclick="deletePost('${post.name}')">🗑️ Delete</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function editPost(filename) {
+            if (!token) {
+                showStatus('⚠️ Please login first', 'error');
+                return;
+            }
+
+            showStatus('📥 Loading post...', 'loading');
+            try {
+                const response = await fetch(
+                    `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
+                    {
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Accept': 'application/vnd.github.v3.raw'
+                        }
+                    }
+                );
+
+                const content = await response.text();
+                const lines = content.split('\n');
+                
+                // Parse front matter
+                let endFrontMatter = 0;
+                for (let i = 1; i < lines.length; i++) {
+                    if (lines[i] === '---') {
+                        endFrontMatter = i;
+                        break;
+                    }
+                }
+
+                const frontMatter = lines.slice(1, endFrontMatter).join('\n');
+                const body = lines.slice(endFrontMatter + 1).join('\n').trim();
+
+                // Extract fields
+                const titleMatch = frontMatter.match(/title:\s*"?([^"\n]+)"?/);
+                const categoriesMatch = frontMatter.match(/categories:\s*\[(.*?)\]/);
+                const tagsMatch = frontMatter.match(/tags:\s*\[(.*?)\]/);
+
+                document.getElementById('title').value = titleMatch ? titleMatch[1] : '';
+                document.getElementById('categories').value = categoriesMatch ? categoriesMatch[1].split(',').map(c => c.trim()).join(', ') : '';
+                document.getElementById('tags').value = tagsMatch ? tagsMatch[1].split(',').map(t => t.trim()).join(', ') : '';
+                document.getElementById('content').value = body;
+
+                switchSection('create');
+                document.querySelector('.form-actions .btn-publish').textContent = '🔄 Update Post';
+                document.querySelector('.form-actions .btn-publish').onclick = () => updatePost(event, filename);
+                
+                showStatus('✅ Post loaded for editing', 'success');
+            } catch (error) {
+                showStatus('❌ Error loading post: ' + error.message, 'error');
+            }
+        }
+
+        async function deletePost(filename) {
+            if (!token) {
+                showStatus('⚠️ Please login first', 'error');
+                return;
+            }
+
+            if (!confirm(`Are you sure you want to delete "${filename}"?`)) return;
+
+            showStatus('🗑️ Deleting post...', 'loading');
+            try {
+                // Get file SHA first
+                const response = await fetch(
+                    `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
+                    {
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    }
+                );
+
+                const data = await response.json();
+
+                // Delete file
+                await fetch(
+                    `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
+                    {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Delete post: ${filename}`,
+                            sha: data.sha
+                        })
+                    }
+                );
+
+                showStatus('✅ Post deleted successfully!', 'success');
+                loadPosts();
+            } catch (error) {
+                showStatus('❌ Error deleting post: ' + error.message, 'error');
+            }
+        }
+
+        async function submitPost(event) {
+            event.preventDefault();
+            if (!token) {
+                showStatus('⚠️ Please login first', 'error');
+                return;
+            }
+
+            await createPost();
+        }
+
+        async function createPost() {
+            const title = document.getElementById('title').value.trim();
+            const categories = document.getElementById('categories').value;
+            const tags = document.getElementById('tags').value;
+            const content = document.getElementById('content').value.trim();
+
+            if (!title || !categories || !tags || !content) {
+                showStatus('❌ Please fill all required fields', 'error');
+                return;
+            }
+
+            showStatus('🚀 Publishing post...', 'loading');
+            try {
+                const date = new Date().toISOString().split('T')[0];
+                const slug = title
+                    .toLowerCase()
+                    .replace(/[^\w\s-]/g, '')
+                    .replace(/\s+/g, '-')
+                    .substring(0, 50);
+                const filename = `${date}-${slug}.md`;
+
+                const categoryArray = categories.split(',').map(c => c.trim());
+                const tagArray = tags.split(',').map(t => t.trim());
+
+                const frontMatter = `---
+title: "${title}"
+date: ${date}
+categories: [${categoryArray.map(c => `${c}`).join(', ')}]
+tags: [${tagArray.map(t => `${t}`).join(', ')}]
+---
+
+${content}`;
+
+                await fetch(
+                    `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
+                    {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Add post: ${title}`,
+                            content: btoa(unescape(encodeURIComponent(frontMatter)))
+                        })
+                    }
+                );
+
+                showStatus(`✅ Post published! Visit https://mrdarkroot.github.io/posts/${slug}/`, 'success');
+                resetForm();
+                loadPosts();
+            } catch (error) {
+                showStatus('❌ Error publishing post: ' + error.message, 'error');
+            }
+        }
+
+        async function updatePost(event, filename) {
+            event.preventDefault();
+            if (!token) {
+                showStatus('⚠️ Please login first', 'error');
+                return;
+            }
+
+            const title = document.getElementById('title').value.trim();
+            const categories = document.getElementById('categories').value;
+            const tags = document.getElementById('tags').value;
+            const content = document.getElementById('content').value.trim();
+
+            showStatus('🔄 Updating post...', 'loading');
+            try {
+                // Get current SHA
+                const response = await fetch(
+                    `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
+                    {
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    }
+                );
+
+                const data = await response.json();
+                const date = filename.substring(0, 10);
+                const categoryArray = categories.split(',').map(c => c.trim());
+                const tagArray = tags.split(',').map(t => t.trim());
+
+                const frontMatter = `---
+title: "${title}"
+date: ${date}
+categories: [${categoryArray.map(c => `${c}`).join(', ')}]
+tags: [${tagArray.map(t => `${t}`).join(', ')}]
+---
+
+${content}`;
+
+                await fetch(
+                    `${GITHUB_API}/repos/${REPO}/contents/_posts/${filename}`,
+                    {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Update post: ${title}`,
+                            content: btoa(unescape(encodeURIComponent(frontMatter))),
+                            sha: data.sha
+                        })
+                    }
+                );
+
+                showStatus('✅ Post updated successfully!', 'success');
+                resetForm();
+                loadPosts();
+            } catch (error) {
+                showStatus('❌ Error updating post: ' + error.message, 'error');
+            }
+        }
+
+        function saveDraft() {
+            const title = document.getElementById('title').value;
+            const categories = document.getElementById('categories').value;
+            const tags = document.getElementById('tags').value;
+            const content = document.getElementById('content').value;
+
+            const draft = { title, categories, tags, content };
+            localStorage.setItem('draft_post', JSON.stringify(draft));
+            showStatus('📝 Draft saved locally!', 'success');
+        }
+
+        function resetForm() {
+            document.getElementById('title').value = '';
+            document.getElementById('categories').value = '';
+            document.getElementById('tags').value = '';
+            document.getElementById('content').value = '';
+            document.querySelector('.form-actions .btn-publish').textContent = '🚀 Publish';
+            document.querySelector('.form-actions .btn-publish').onclick = () => submitPost(event);
+        }
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            setTimeout(() => {
+                if (type !== 'loading') {
+                    status.className = 'status';
+                }
+            }, 5000);
+        }
+
+        // Load draft if exists
+        window.addEventListener('load', () => {
+            const draft = localStorage.getItem('draft_post');
+            if (draft) {
+                const parsed = JSON.parse(draft);
+                document.getElementById('title').value = parsed.title || '';
+                document.getElementById('categories').value = parsed.categories || '';
+                document.getElementById('tags').value = parsed.tags || '';
+                document.getElementById('content').value = parsed.content || '';
+            }
+        });
+    </script>
+</body>
+</html>
