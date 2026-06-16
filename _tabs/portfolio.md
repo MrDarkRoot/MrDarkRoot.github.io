@@ -109,24 +109,6 @@ The vulnerability involved an unauthenticated Stripe webhook path, persistent at
 
 ## Projects
 
-### Omni Workstation
-
-**Status:** In development
-
-A security-research workflow for reviewing and validating WordPress plugin vulnerabilities.
-
-Current areas include:
-
-- Source-code inventory
-- Patch-diff triage
-- Trust-boundary analysis
-- Authorization review
-- Runtime validation
-- Evidence collection
-- Report-readiness checks
-
-> Add repository links, screenshots, architecture diagrams, and technical details later.
-
 ### AI-assisted Threat Detection for University Systems
 
 **Status:** Research project / In development
@@ -149,20 +131,6 @@ Planned components include:
 
 ---
 
-## Labs and Write-ups
-
-Selected learning and technical areas:
-
-- Web application penetration testing
-- Red teaming
-- Windows security
-- Linux security
-- Network security
-- Active Directory fundamentals
-- Detection engineering
-- Vulnerability research
-
-Selected write-ups can be linked here later.
 
 ---
 
