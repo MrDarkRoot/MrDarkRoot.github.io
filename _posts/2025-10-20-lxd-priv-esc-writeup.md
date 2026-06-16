@@ -9,7 +9,7 @@ tags: [lxd, privilege-escalation, hardening, linux, defense]
 ---
 
 
-# Hello Jekyll 👋
+# Hello Jekyll 
 
 
 **Author:** biusa_mrdarkroot
@@ -23,7 +23,7 @@ This write-up explains the theory behind a known LXD-based privilege escalation 
 ---
 
 
-## 🪶 Theory (high-level)
+##  Theory (high-level)
 
 
 - **Attack surface:** LXD exposes container management capabilities. Users in the `lxd` group (or with access to the LXD socket) can create and configure containers and attach host resources (devices, mounts).
@@ -41,7 +41,7 @@ This write-up explains the theory behind a known LXD-based privilege escalation 
 ---
 
 
-## ⚠️ Real-world impact
+##  Real-world impact
 
 
 - Full host compromise (arbitrary code execution as root).
@@ -56,7 +56,7 @@ This write-up explains the theory behind a known LXD-based privilege escalation 
 ---
 
 
-## ✅ Detection & Indicators of Abuse
+##  Detection & Indicators of Abuse
 
 
 Monitor for suspicious LXD and filesystem activity:
@@ -99,7 +99,7 @@ Monitor for suspicious LXD and filesystem activity:
 ---
 
 
-## 🛡️ Mitigations & Hardening (practical, defensive)
+##  Mitigations & Hardening (practical, defensive)
 
 
 Treat `lxd` membership as sensitive — apply defense-in-depth:
@@ -172,7 +172,7 @@ Treat `lxd` membership as sensitive — apply defense-in-depth:
 ---
 
 
-## 🔧 Defensive commands & checks (safe examples)
+##  Defensive commands & checks (safe examples)
 
 
 Use these as defensive checks — **not** exploit steps:
@@ -228,7 +228,7 @@ auditctl -a exit,always -F arch=b64 -S mount -k mount_ops
 ---
 
 
-## 🧪 Safe lab testing guidance (authorized only)
+##  Safe lab testing guidance (authorized only)
 
 
 If you own the system or have explicit written authorization:
@@ -246,7 +246,7 @@ If you own the system or have explicit written authorization:
 ---
 
 
-## 📚 Resources & further reading
+##  Resources & further reading
 
 
 - Official LXD documentation — administration and security guidance.  
@@ -259,7 +259,7 @@ If you own the system or have explicit written authorization:
 ---
 
 
-## ✅ Final notes
+##  Final notes
 
 
 - Access to LXD (via `lxd` group or socket) should be treated as highly sensitive — similar to administrative host access.
