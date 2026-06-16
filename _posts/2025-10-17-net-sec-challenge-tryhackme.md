@@ -5,7 +5,7 @@ categories: [CTF, Writeup, Network Security]
 tags: [tryhackme, networkscan, nmap, hydra, telnet,curl]
 ---
 
-# Hello Jekyll 👋
+# Hello Jekyll 
 
 This write-up documents my solution for the **Net Sec Challenge — Network Security** room on TryHackMe.  
 Author: **biusa_mrdarkroot**
@@ -14,7 +14,7 @@ The goal of this challenge is to practice skills from the Network Security modul
 
 ---
 
-## 🪶 Objectives
+## Objectives
 
 - Scan ports across a broad range (1–9999) to find services not in top-1000
 - Perform banner grabbing using `curl` / `telnet`
@@ -28,14 +28,14 @@ The goal of this challenge is to practice skills from the Network Security modul
 
 ---
 
-## ✨ Environment & Tools
+##  Environment & Tools
 
 - Platform: TryHackMe — *Net Sec Challenge*  
 - Tools used: `nmap`, `telnet`, `curl`, `hydra`
 
 ---
 
-## 🔎 Questions & Answers
+##  Questions & Answers
 
 **Q1 — What is the highest open port under 10,000?**  
 **Goal:** Scan ports 1–9999 to identify the highest open port.  
@@ -53,7 +53,7 @@ The goal of this challenge is to practice skills from the Network Security modul
 
 ---
 
-## 🔍 Hidden flags in service headers
+##  Hidden flags in service headers
 
 **Q4 — Hidden flag in the HTTP Server header?**  
 **Goal:** Inspect HTTP response headers using `curl`, `telnet`, or Burp Suite.  
@@ -74,7 +74,7 @@ The goal of this challenge is to practice skills from the Network Security modul
 
 ---
 
-## 🧾 FTP & credentials
+##  FTP & credentials
 
 **Q6 — An FTP server is listening on a non-standard port. What is the FTP server version?**  
 **Goal:** Scan port `10021` (found earlier) to identify the service on that port.  
@@ -96,7 +96,7 @@ The goal of this challenge is to practice skills from the Network Security modul
 
 ---
 
-## 🧩 Web challenge on port 8080
+##  Web challenge on port 8080
 
 **Q8 — Visiting http://<TARGET_IP>:8080 reveals a small challenge. After solving it you receive a flag. What is that flag?**  
 **Goal:** Scan the server in a way that avoids simple IDS detection (hint: use a NULL scan when appropriate), then solve the web challenge.  
@@ -107,13 +107,13 @@ The goal of this challenge is to practice skills from the Network Security modul
 
 ---
 
-## ✅ Results
+##  Results
 
 - Obtained the **Moderator flag** via stored XSS + session hijacking.  
 - Enumerated hidden files to find admin credentials → logged in as admin → obtained the **Admin flag**.
 
 ---
-## 🧠 Quick commands reference
+##  Quick commands reference
 
 - Full port scan (example):  
   ```bash
