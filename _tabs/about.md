@@ -8,16 +8,22 @@ permalink: /about/
 
 ## About Me
 
-I’m **Tran Khanh Duy**, an application security learner and independent security researcher focused on finding, validating, and responsibly disclosing vulnerabilities in web applications and WordPress plugins.
+I’m **Tran Khanh Duy**, an independent application security researcher focused on web applications, APIs, and WordPress plugin security.
 
-My current work centers on:
+My work combines source-code review, manual testing, patch-diff analysis, and controlled runtime validation. I am especially interested in vulnerabilities where trust is misplaced across authentication, authorization, persistence, and rendering boundaries.
 
-- **Application Security:** authentication, authorization, access control, input handling, and business-logic flaws
-- **WordPress Security Research:** source-code review, patch-diff analysis, runtime validation, and coordinated disclosure
-- **API Security:** IDOR, broken authorization, insecure state transitions, rate-limit weaknesses, and OWASP API Security risks
-- **Security Automation:** building Python, Bash, and CLI workflows for repeatable reconnaissance, testing, and evidence collection
+Current focus areas include:
 
-I prefer evidence-driven research: trace the data flow, identify the trust boundary, reproduce the behavior in a controlled lab, measure the real impact, and document the result clearly.
+- Broken access control and IDOR
+- Authentication and session-management flaws
+- Privilege escalation
+- Stored cross-site scripting
+- Webhook authenticity and trust-boundary failures
+- Unsafe file operations
+- Business-logic vulnerabilities
+- Security testing automation
+
+I approach research with a simple rule: prove reachability, prove impact, and document only what the evidence supports.
 
 ---
 
@@ -25,46 +31,50 @@ I prefer evidence-driven research: trace the data flow, identify the trust bound
 
 ### CVE-2026-11855
 
-I discovered and reported **CVE-2026-11855**, an unauthenticated stored cross-site scripting vulnerability affecting the Simple Membership WordPress plugin before version 4.7.5.
+I discovered and reported **CVE-2026-11855**, an unauthenticated stored cross-site scripting vulnerability in the Simple Membership WordPress plugin before version 4.7.5.
 
-The issue involved a forged Stripe webhook path, persistent attacker-controlled data, and unsafe rendering inside an administrator-facing notice.
+The vulnerability involved an unauthenticated Stripe webhook path, attacker-controlled persistent data, and unsafe rendering inside an administrator-facing notice.
 
-- **Type:** Unauthenticated Stored XSS
+- **Severity:** High
+- **CVSS:** 8.8
 - **CWE:** CWE-79
-- **CVSS:** 8.8 — High
-- **Affected software:** Simple Membership for WordPress
+- **Affected versions:** Before 4.7.5
 - **Fixed version:** 4.7.5
 - **Researcher:** Duy Tran
 
-[Read the technical write-up](/posts/cve-2026-11855-simple-membership-stored-xss/)
+[Read the full technical write-up](/posts/cve-2026-11855-simple-membership-stored-xss/)
+
+More research notes and disclosures are available on the [Research](/research/) page.
 
 ---
 
-## Research Methodology
+## Research Workflow
 
-My typical workflow is:
+My usual workflow is:
 
-1. Select an in-scope target and verify the latest affected version.
-2. Review source code and recent patches for high-value trust-boundary changes.
-3. Trace attacker-controlled input to security-sensitive sinks.
-4. Validate reachability, authorization requirements, persistence, and impact.
-5. Reproduce the issue in an isolated local environment.
-6. Prepare a minimal, verifiable report for coordinated disclosure.
+1. Confirm the target is in scope and identify the latest relevant version.
+2. Review source code, recent patches, and exposed attack surfaces.
+3. Trace attacker-controlled data across trust boundaries.
+4. Validate actor requirements, authorization checks, persistence, and impact.
+5. Reproduce the issue in an isolated local lab.
+6. Collect minimal, repeatable evidence.
+7. Submit through coordinated disclosure or an authorized bug-bounty program.
 
-My main research interests include broken access control, privilege escalation, stored XSS, webhook security, unsafe file operations, authentication flaws, and business-logic vulnerabilities.
+I prioritize findings with clear security impact over code patterns that only appear dangerous in isolation.
 
 ---
 
-## Skills and Tools
+## Skills and Tooling
 
 - Web and API penetration testing
-- WordPress plugin security review
-- PHP and JavaScript source-code analysis
+- WordPress plugin source-code review
+- PHP and JavaScript analysis
 - Burp Suite and manual HTTP testing
 - Python and Bash automation
-- Docker-based security labs
-- Git and patch-diff analysis
-- Linux and Windows security fundamentals
+- Docker-based WordPress labs
+- Git, SVN, and patch-diff analysis
+- Linux security workflows
+- Vulnerability reporting and coordinated disclosure
 
 ---
 
@@ -84,4 +94,6 @@ My main research interests include broken access control, privilege escalation, 
 - [LinkedIn](https://www.linkedin.com/in/duy-tr%E1%BA%A7n-7b0987357/)
 - Email: `duyytrann22@gmail.com`
 
-> Research carefully. Validate honestly. Disclose responsibly.
+All research published on this site is conducted in authorized environments, local labs, or public vulnerability-disclosure programs.
+
+> Validate carefully. Report honestly. Disclose responsibly.
