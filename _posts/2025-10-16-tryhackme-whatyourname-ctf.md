@@ -5,13 +5,13 @@ categories: [CTF, Writeup]
 tags: [tryhackme, ctf, xss, session-hijack, websec]
 ---
 
-# Hello Jekyll 👋
+# Hello Jekyll 
 
 This is my write-up — **biusa_mrdarkroot** — for the **"Whats Your Name?"** challenge on TryHackMe. The write-up documents client-side exploitation (stored XSS), session hijacking, and sensitive data discovery, with commands and notes to reproduce the steps in a lab environment.
 
 ---
 
-## 🪶 Objectives
+##  Objectives
 
 - Discover and exploit a stored XSS in the **Name** field  
 - Capture a victim's cookie via payload → perform session hijacking  
@@ -25,7 +25,7 @@ This is my write-up — **biusa_mrdarkroot** — for the **"Whats Your Name?"** 
 
 ---
 
-## ✨ Environment & Tools
+## ✨Environment & Tools
 
 - Platform: TryHackMe — room: *Whats Your Name?* (subscription required)  
 - Attacker machine: Kali Linux  
@@ -33,7 +33,7 @@ This is my write-up — **biusa_mrdarkroot** — for the **"Whats Your Name?"** 
 
 ---
 
-## 🔎 Step 1 — Start the machine & port scan
+##  Step 1 — Start the machine & port scan
 
 - Click **Start Machine** on TryHackMe to obtain the target IP.  
 - Run a quick port scan:
@@ -46,7 +46,7 @@ Typical result: ports **22 (SSH)**, **80 (HTTP)**, **8081 (HTTP)** are open.
 
 ---
 
-## 💣 Step 2 — Find stored XSS & inject payload
+##  Step 2 — Find stored XSS & inject payload
 
 - Add hosts to `/etc/hosts` if the room provides domain names, then visit the web app.  
 - Open the **Register** page and test input fields. The **Name** field appears to accept HTML/JS — try a stored XSS payload:
@@ -78,7 +78,7 @@ If a moderator or another privileged user views the registration details contain
 
 ---
 
-## 🧩 Step 3 — Session hijacking
+##  Step 3 — Session hijacking
 
 - Capture the cookie from the incoming request (for example `PHPSESSID=<value>`).  
 - Open your browser's DevTools → Storage → Cookies.  
@@ -87,7 +87,7 @@ If a moderator or another privileged user views the registration details contain
 
 ---
 
-## 🔐 Step 4 — Directory enumeration & admin flag
+##  Step 4 — Directory enumeration & admin flag
 
 - While logged in as Moderator, a subdomain (for example `login.worldwap.thm`) may be discovered — add it to `/etc/hosts`.  
 - Use `gobuster` to enumerate directories:
@@ -101,7 +101,7 @@ gobuster dir -u http://login.worldwap.thm -w /usr/share/wordlists/dirbuster/dire
 
 ---
 
-## ✅ Results
+##  Results
 
 - Obtained the **Moderator flag** via stored XSS + session hijacking.  
 - Enumerated hidden files to find admin credentials → logged in as admin → obtained the **Admin flag**.
@@ -111,7 +111,7 @@ gobuster dir -u http://login.worldwap.thm -w /usr/share/wordlists/dirbuster/dire
 </p>
 
 
-## 🌐 Suggested screenshots to include
+##  Suggested screenshots to include
 
 - Before/after rendering of the payload on the page.  
 - Server logs on Kali showing the request URL with cookie.  
@@ -120,7 +120,7 @@ gobuster dir -u http://login.worldwap.thm -w /usr/share/wordlists/dirbuster/dire
 
 ---
 
-## 🧠 Quick commands
+##  Quick commands
 
 - Port scan: `nmap -sS <MACHINE_IP>`  
 - Listen for callback: `python3 -m http.server 1337`  
