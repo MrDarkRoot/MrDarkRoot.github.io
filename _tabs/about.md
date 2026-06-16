@@ -40,7 +40,8 @@ You can find me on:
 - [LinkedIn](https://www.linkedin.com/in/duy-tr%E1%BA%A7n-7b0987357/)
 - [GitHub](https://github.com/MrDarkRoot)
 
-📫 **Email:** `duytran22cyberstudent@gmail.com`
+📫 **Email:** `duyytrann22@gmail.com
+`
 
 ---
 
