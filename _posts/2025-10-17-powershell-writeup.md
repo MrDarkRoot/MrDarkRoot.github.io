@@ -5,7 +5,7 @@ categories: [CTF, Writeup, Windows, PowerShell]
 tags: [powershell, windows, enumeration, scripting, tryhackme]
 ---
 
-# Hello Jekyll 👋
+# Hello Jekyll 
 
 This write-up summarizes the PowerShell room exercises and solutions.  
 Author: **biusa_mrdarkroot**
@@ -14,7 +14,7 @@ We explore PowerShell basics, Windows enumeration using PowerShell, and scriptin
 
 ---
 
-## 🪶 Objectives
+##  Objectives
 
 In this room we'll cover:
 
@@ -25,7 +25,7 @@ In this room we'll cover:
 
 ---
 
-## ✨ What is PowerShell?
+##  What is PowerShell?
 
 PowerShell is the Windows shell and scripting language built on the .NET framework. Cmdlets (PowerShell commands) are typically written in .NET and return **objects** rather than plain text — which lets you manipulate results more easily by piping objects between cmdlets. Cmdlets follow a `Verb-Noun` naming convention (for example `Get-Command`).
 
@@ -47,7 +47,7 @@ Get-Help <Cmdlet-Name>
 
 ---
 
-## 🔎 Basic PowerShell commands & object manipulation
+##  Basic PowerShell commands & object manipulation
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/160b5012-949f-40be-9657-bd4b2cc52d62" alt="Screenshot-thumnail" width="80%">
@@ -82,7 +82,7 @@ Verb-Noun | Sort-Object -Property Name
 
 ---
 
-## 🧪 Quick practice & answers
+##  Quick practice & answers
 
 **Q:** What is the location of the file `interesting-file.txt`?  
 **A:** `C:\Program Files`  
@@ -133,7 +133,7 @@ $data = Get-Content $file
 
 ---
 
-## 🧭 Enumeration with PowerShell
+##  Enumeration with PowerShell
 
 Common enumeration targets:
 
@@ -248,7 +248,7 @@ foreach($port in $text_port){
 
 ---
 
-## ⚙ Intermediate scripting — simple port scanner
+##  Intermediate scripting — simple port scanner
 
 Example simple TCP connect scan:
 
@@ -263,7 +263,7 @@ for($i=130; $i -le 140; $i++){
 
 ---
 
-## ✅ Final notes & lessons
+## Final notes & lessons
 
 - PowerShell's object-based pipeline is extremely useful for enumeration and automation.  
 - Learn to read object properties with `Get-Member` and chain cmdlets using the pipeline.  
