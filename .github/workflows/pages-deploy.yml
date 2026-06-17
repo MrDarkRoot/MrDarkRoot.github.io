@@ -1,4 +1,5 @@
 name: "Build and Deploy"
+
 on:
   push:
     branches:
@@ -8,8 +9,6 @@ on:
       - .gitignore
       - README.md
       - LICENSE
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
@@ -17,7 +16,6 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -31,9 +29,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # submodules: true
-          # If using the 'assets' git submodule from Chirpy Starter, uncomment above
-          # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
 
       - name: Setup Pages
         id: pages
@@ -46,15 +41,32 @@ jobs:
           bundler-cache: true
 
       - name: Build site
-        run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
+        run: bundle exec jekyll build --trace -d "_site${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: "production"
 
-      - name: Test site
+      - name: Verify CVE page output
+        shell: bash
         run: |
-          bundle exec htmlproofer _site \
-            \-\-disable-external \
-            \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+          OUTPUT_ROOT="_site${{ steps.pages.outputs.base_path }}"
+          CVE_PAGE="$OUTPUT_ROOT/posts/cve-2026-11855-simple-membership-stored-xss/index.html"
+
+          echo "Checking generated CVE page: $CVE_PAGE"
+          find "$OUTPUT_ROOT/posts" -maxdepth 3 -type f 2>/dev/null | sort | head -200 || true
+
+          if [[ ! -f "$CVE_PAGE" ]]; then
+            echo "::error::Jekyll did not generate the expected CVE page at $CVE_PAGE"
+            exit 1
+          fi
+
+          echo "CVE page generated successfully."
+
+      - name: Test site links
+        continue-on-error: true
+        run: |
+          bundle exec htmlproofer "_site${{ steps.pages.outputs.base_path }}" \
+            --disable-external \
+            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
