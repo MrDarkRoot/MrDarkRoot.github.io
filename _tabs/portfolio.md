@@ -19,7 +19,7 @@ permalink: /portfolio/
 .portfolio-card h3{margin-top:0;color:var(--blue)}.portfolio-meta{color:var(--muted);font-size:.95rem}.portfolio-lead{font-size:1.05rem;line-height:1.75}
 .portfolio-links{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.15rem 0 0}.portfolio-links a{display:inline-flex;padding:.55rem .8rem;border:1px solid var(--border);border-radius:.65rem;background:var(--surface);text-decoration:none;font-weight:650;transition:transform .18s ease,background .18s ease}.portfolio-links a:hover{transform:translateY(-2px);background:var(--soft)}
 .portfolio-stat{text-align:center}.portfolio-stat strong{display:block;font-size:1.4rem;color:var(--blue)}
-.portfolio-award img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:.65rem;margin-bottom:1rem;border:1px solid var(--border);background:var(--soft)}
+.portfolio-award-note{margin:0 0 1rem;padding:.75rem;border:1px dashed var(--border);border-radius:.65rem;background:var(--soft);color:var(--muted);font-size:.92rem}
 .portfolio-list{margin:0;padding-left:1.2rem}.portfolio-list li{margin:.35rem 0}.portfolio-footer{margin-top:2.7rem;padding-top:1.2rem;border-top:1px solid var(--border)}
 .portfolio-section,.portfolio-card{animation:portfolio-rise .55s ease both}@keyframes portfolio-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:800px){.portfolio-wrap{padding:1rem}.portfolio-grid,.portfolio-grid.three{grid-template-columns:1fr}}
@@ -111,9 +111,9 @@ permalink: /portfolio/
   <section class="portfolio-section">
     <h2>Awards and Academic Recognition</h2>
     <div class="portfolio-grid three">
-      <div class="portfolio-card portfolio-award"><img src="/assets/img/awards/research-award-1.jpg" alt="Second Prize in STU Student Scientific Research Competition 2024–2025"><h3>Second Prize — Student Scientific Research</h3><p class="portfolio-meta">Saigon Technology University · 2024–2025</p><p>Awarded to Tran Khanh Duy, Dinh Viet Huy, and Le Van Tung in the Information Technology category.</p></div>
-      <div class="portfolio-card portfolio-award"><img src="/assets/img/awards/research-award-2.jpg" alt="Scientific Research Certificate of Merit"><h3>Certificate of Merit — Scientific Research</h3><p class="portfolio-meta">Saigon Technology University · July 2025</p><p>Official commendation for achieving Second Prize in the university scientific research competition.</p></div>
-      <div class="portfolio-card portfolio-award"><img src="/assets/img/awards/english-club-award.jpg" alt="Second Prize English Club presentation contest"><h3>Second Prize — English Presentation Contest</h3><p class="portfolio-meta">STU English Club · 2023</p><p>Second Prize in “Field Trip — Culture Gap,” organized by the English Club and Faculty of Basic Sciences.</p></div>
+      <div class="portfolio-card portfolio-award"><div class="portfolio-award-note">Award image will be added after upload.</div><h3>Second Prize — Student Scientific Research</h3><p class="portfolio-meta">Saigon Technology University · 2024–2025</p><p>Awarded to Tran Khanh Duy, Dinh Viet Huy, and Le Van Tung in the Information Technology category.</p></div>
+      <div class="portfolio-card portfolio-award"><div class="portfolio-award-note">Certificate image will be added after upload.</div><h3>Certificate of Merit — Scientific Research</h3><p class="portfolio-meta">Saigon Technology University · July 2025</p><p>Official commendation for achieving Second Prize in the university scientific research competition.</p></div>
+      <div class="portfolio-card portfolio-award"><div class="portfolio-award-note">Award image will be added after upload.</div><h3>Second Prize — English Presentation Contest</h3><p class="portfolio-meta">STU English Club · 2023</p><p>Second Prize in “Field Trip — Culture Gap,” organized by the English Club and Faculty of Basic Sciences.</p></div>
     </div>
   </section>
 
