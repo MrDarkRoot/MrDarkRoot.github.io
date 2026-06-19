@@ -27,26 +27,7 @@ I approach research with a simple rule: prove reachability, prove impact, and do
 
 ---
 
-## Vulnerability Research
 
-### CVE-2026-11855
-
-I discovered and reported **CVE-2026-11855**, an unauthenticated stored cross-site scripting vulnerability in the Simple Membership WordPress plugin before version 4.7.5.
-
-The vulnerability involved an unauthenticated Stripe webhook path, attacker-controlled persistent data, and unsafe rendering inside an administrator-facing notice.
-
-- **Severity:** High
-- **CVSS:** 8.8
-- **CWE:** CWE-79
-- **Affected versions:** Before 4.7.5
-- **Fixed version:** 4.7.5
-- **Researcher:** Duy Tran
-
-[Read the full technical write-up](/posts/cve-2026-11855-simple-membership-stored-xss/)
-
-More research notes and disclosures are available on the [Research](/research/) page.
-
----
 
 ## Research Workflow
 
