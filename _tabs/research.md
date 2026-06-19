@@ -12,6 +12,27 @@ This page tracks my application-security research, public disclosures, and techn
 
 ## Published Vulnerabilities
 
+### CVE-2026-11571 — Everest Forms
+
+**Unauthenticated Sensitive Information Exposure via Residual CSV Artifacts**
+
+- Severity: **Medium**
+- CVSS: **5.9**
+- CWE: **CWE-200**
+- OWASP Top 10: **A3: Sensitive Data Exposure**
+- Affected versions: **Before 3.5.0**
+- Fixed version: **3.5.0**
+- WPVDB ID: **4bd381e9-2f4e-4e61-99af-88f50aed71f5**
+- Researcher: **Duy**
+
+The vulnerability involved retained CSV submission artifacts generated during the Everest Forms email-notification workflow. Under the affected configuration, temporary CSV files containing form submission records were not reliably deleted and could remain accessible from the public uploads area.
+
+The operational proof of concept is intentionally withheld until **July 02, 2026** to give users time to update.
+
+[Read the full technical write-up](/posts/cve-2026-11571-everest-forms-sensitive-information-exposure/)
+
+---
+
 ### CVE-2026-11855 — Simple Membership
 
 **Unauthenticated Stored Cross-Site Scripting via Stripe Webhook API Version**
@@ -21,6 +42,7 @@ This page tracks my application-security research, public disclosures, and techn
 - CWE: **CWE-79**
 - Affected versions: **Before 4.7.5**
 - Fixed version: **4.7.5**
+- WPVDB ID: **217cb606-a0f2-4427-9262-cfe1cc90474e**
 - Researcher: **Duy Tran**
 
 The vulnerability allowed an unauthenticated attacker to submit a forged Stripe webhook containing attacker-controlled metadata. The supplied value was stored and later rendered in an administrator-facing notice without sufficient output encoding, resulting in JavaScript execution in an authenticated administrator's browser context.
@@ -39,6 +61,7 @@ The vulnerability allowed an unauthenticated attacker to submit a forged Stripe 
 - Webhook authenticity and trust boundaries
 - Privilege escalation
 - Unsafe file operations
+- Sensitive data exposure
 - Business-logic vulnerabilities
 - Security testing automation
 
