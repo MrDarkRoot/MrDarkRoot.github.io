@@ -36,9 +36,15 @@ permalink: /academy/
       <p>Study secure design and implementation patterns for the same vulnerability classes, with emphasis on authorization, fail-closed behavior, context-aware encoding, validation, and WordPress-specific controls.</p>
       <a href="/academy/secure-code/">Browse secure coding topics →</a>
     </article>
+
+    <article class="academy-card">
+      <h2>Cloud & Virtualization</h2>
+      <p>Learn the beginner mental model for virtualization, hypervisors, virtual machines, Docker containers, IaaS, PaaS, SaaS, shared responsibility, cloud monitoring, and common cloud security mistakes.</p>
+      <a href="/academy/cloud-virtualization-security-fundamentals/">Read cloud fundamentals →</a>
+    </article>
   </div>
 
   <div class="academy-note">
-    <strong>Scope:</strong> Application security, PHP, APIs, and WordPress plugin security. Examples are educational and intended for authorized testing and defensive engineering.
+    <strong>Scope:</strong> Application security, PHP, APIs, WordPress plugin security, cloud security fundamentals, and secure engineering notes. Examples are educational and intended for authorized testing and defensive engineering.
   </div>
 </div>
