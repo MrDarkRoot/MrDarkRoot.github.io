@@ -15,7 +15,7 @@ I discovered an unauthenticated sensitive information exposure vulnerability in 
 
 The vulnerability affects Everest Forms versions earlier than **3.5.0** and has been assigned:
 
-* **CVE:** [CVE-2026-11571](https://www.cve.org/CVERecord?id=CVE-2026-11571)
+* **Official CVE Record:** [CVE-2026-11571](https://www.cve.org/CVERecord?id=CVE-2026-11571)
 * **Vulnerability type:** Sensitive Data Disclosure / Information Disclosure
 * **CWE:** CWE-200
 * **OWASP Top 10:** A3: Sensitive Data Exposure
@@ -248,7 +248,7 @@ This vulnerability was independently discovered and reported by:
 
 ## References
 
-* [CVE-2026-11571](https://www.cve.org/CVERecord?id=CVE-2026-11571)
+* Official CVE Record: [CVE-2026-11571](https://www.cve.org/CVERecord?id=CVE-2026-11571)
 * WPScan Vulnerability Database entry: `4bd381e9-2f4e-4e61-99af-88f50aed71f5`
 * Everest Forms WordPress plugin
 * Everest Forms 3.5.0
