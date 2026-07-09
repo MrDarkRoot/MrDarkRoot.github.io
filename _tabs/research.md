@@ -8,85 +8,21 @@ permalink: /research/
 
 ## Security Research Portfolio
 
-This page tracks my application-security research, public disclosures, and technical write-ups.
+This page tracks my public vulnerability disclosures and technical write-ups.
 
 ## Published Vulnerabilities
 
-### CVE-2026-14224 — Easy Appointments
-
-**Subscriber+ IDOR Allows Cross-User Appointment Notification Redirection**
-
-- Severity: **Not publicly available in this write-up**
-- CVSS: **Not publicly available in this write-up**
-- CWE: **Not publicly available in this write-up**
-- Vulnerability type: **IDOR / Broken Access Control**
-- Minimum required access: **Subscriber**
-- Affected versions: **3.12.26 and earlier**
-- Fixed version: **Not publicly available in this write-up**
-- CVE Record: [Official CVE entry](https://www.cve.org/CVERecord?id=CVE-2026-14224)
-- Researcher: **Duy**
-
-The vulnerability involved an object-level authorization failure in the Easy Appointments customer-data update workflow. A Subscriber could reuse an edit nonce obtained from an appointment they owned while targeting another user's appointment identifier, allowing foreign EMAIL-type metadata to be replaced and later consumed by the normal notification workflow.
-
-The operational proof of concept is intentionally withheld.
-
-[Read the full technical write-up](/posts/cve-2026-14224-easy-appointments-idor-notification-redirection/)
-
----
-
-### CVE-2026-11571 — Everest Forms
-
-**Unauthenticated Sensitive Information Exposure via Residual CSV Artifacts**
-
-- Severity: **Medium**
-- CVSS: **5.9**
-- CWE: **CWE-200**
-- OWASP Top 10: **A3: Sensitive Data Exposure**
-- Affected versions: **Before 3.5.0**
-- Fixed version: **3.5.0**
-- WPVDB ID: **4bd381e9-2f4e-4e61-99af-88f50aed71f5**
-- CVE Record: [Official CVE entry](https://www.cve.org/CVERecord?id=CVE-2026-11571)
-- Researcher: **Duy**
-
-The vulnerability involved retained CSV submission artifacts generated during the Everest Forms email-notification workflow. Under the affected configuration, temporary CSV files containing form submission records were not reliably deleted and could remain accessible from the public uploads area.
-
-The operational proof of concept is intentionally withheld until **July 02, 2026** to give users time to update.
-
-[Read the full technical write-up](/posts/cve-2026-11571-everest-forms-sensitive-information-exposure/)
-
----
-
-### CVE-2026-11855 — Simple Membership
-
-**Unauthenticated Stored Cross-Site Scripting via Stripe Webhook API Version**
-
-- Severity: **High**
-- CVSS: **8.8**
-- CWE: **CWE-79**
-- Affected versions: **Before 4.7.5**
-- Fixed version: **4.7.5**
-- WPVDB ID: **217cb606-a0f2-4427-9262-cfe1cc90474e**
-- Researcher: **Duy Tran**
-
-The vulnerability allowed an unauthenticated attacker to submit a forged Stripe webhook containing attacker-controlled metadata. The supplied value was stored and later rendered in an administrator-facing notice without sufficient output encoding, resulting in JavaScript execution in an authenticated administrator's browser context.
-
-[Read the full technical write-up](/posts/cve-2026-11855-simple-membership-stored-xss/)
+| CVE | Project | Title | Links |
+| --- | --- | --- | --- |
+| CVE-2026-14224 | Easy Appointments | Subscriber+ IDOR Allows Cross-User Appointment Notification Redirection | [Write-up](/posts/cve-2026-14224-easy-appointments-idor-notification-redirection/) · [CVE](https://www.cve.org/CVERecord?id=CVE-2026-14224) |
+| CVE-2026-11571 | Everest Forms | Unauthenticated Sensitive Information Exposure via Residual CSV Artifacts | [Write-up](/posts/cve-2026-11571-everest-forms-sensitive-information-exposure/) · [CVE](https://www.cve.org/CVERecord?id=CVE-2026-11571) · [WPVDB](https://wpscan.com/vulnerability/4bd381e9-2f4e-4e61-99af-88f50aed71f5/) |
+| CVE-2026-11855 | Simple Membership | Unauthenticated Stored Cross-Site Scripting via Stripe Webhook API Version | [Write-up](/posts/cve-2026-11855-simple-membership-stored-xss/) · [WPVDB](https://wpscan.com/vulnerability/217cb606-a0f2-4427-9262-cfe1cc90474e/) |
 
 ---
 
 ## Current Research Areas
 
-- WordPress plugin security
-- Web and API authorization
-- Authentication and session workflows
-- IDOR and broken access control
-- Stored cross-site scripting
-- Webhook authenticity and trust boundaries
-- Privilege escalation
-- Unsafe file operations
-- Sensitive data exposure
-- Business-logic vulnerabilities
-- Security testing automation
+WordPress plugin security, web/API authorization, IDOR, broken access control, stored XSS, webhook trust boundaries, unsafe file operations, sensitive data exposure, and security testing automation.
 
 ---
 
