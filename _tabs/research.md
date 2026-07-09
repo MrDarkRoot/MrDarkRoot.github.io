@@ -23,6 +23,7 @@ This page tracks my application-security research, public disclosures, and techn
 - Affected versions: **Before 3.5.0**
 - Fixed version: **3.5.0**
 - WPVDB ID: **4bd381e9-2f4e-4e61-99af-88f50aed71f5**
+- CVE Record: [Official CVE entry](https://www.cve.org/CVERecord?id=CVE-2026-11571)
 - Researcher: **Duy**
 
 The vulnerability involved retained CSV submission artifacts generated during the Everest Forms email-notification workflow. Under the affected configuration, temporary CSV files containing form submission records were not reliably deleted and could remain accessible from the public uploads area.
