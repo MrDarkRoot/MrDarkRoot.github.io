@@ -12,6 +12,28 @@ This page tracks my application-security research, public disclosures, and techn
 
 ## Published Vulnerabilities
 
+### CVE-2026-14224 — Easy Appointments
+
+**Subscriber+ IDOR Allows Cross-User Appointment Notification Redirection**
+
+- Severity: **Not publicly available in this write-up**
+- CVSS: **Not publicly available in this write-up**
+- CWE: **Not publicly available in this write-up**
+- Vulnerability type: **IDOR / Broken Access Control**
+- Minimum required access: **Subscriber**
+- Affected versions: **3.12.26 and earlier**
+- Fixed version: **Not publicly available in this write-up**
+- CVE Record: [Official CVE entry](https://www.cve.org/CVERecord?id=CVE-2026-14224)
+- Researcher: **Duy**
+
+The vulnerability involved an object-level authorization failure in the Easy Appointments customer-data update workflow. A Subscriber could reuse an edit nonce obtained from an appointment they owned while targeting another user's appointment identifier, allowing foreign EMAIL-type metadata to be replaced and later consumed by the normal notification workflow.
+
+The operational proof of concept is intentionally withheld.
+
+[Read the full technical write-up](/posts/cve-2026-14224-easy-appointments-idor-notification-redirection/)
+
+---
+
 ### CVE-2026-11571 — Everest Forms
 
 **Unauthenticated Sensitive Information Exposure via Residual CSV Artifacts**
