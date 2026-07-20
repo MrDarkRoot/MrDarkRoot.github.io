@@ -10,6 +10,14 @@
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
 
+- type: hackerone
+  icon: "fas fa-bug"
+  url: "https://hackerone.com/duyytrann?type=user"
+
+- type: google-bug-hunters
+  icon: "fas fa-bug"
+  url: "https://bughunters.google.com/profile/4b61790a-3556-49b1-807e-90ade6ab0109"
+
 - type: rss
   icon: "fas fa-rss"
   noblank: true
