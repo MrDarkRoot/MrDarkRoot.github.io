@@ -1,7 +1,7 @@
 ---
 title: "CVE-2026-11571: When an Email CSV Attachment Stayed Public in Everest Forms"
 date: 2026-06-19 21:30:00 +0700
-last_modified_at: 2026-08-25 10:26:00 +0700
+last_modified_at: 2026-08-25 11:25:00 +0700
 categories: [Security Research, WordPress]
 tags: [cve, wordpress, everest-forms, sensitive-data-disclosure, information-disclosure, csv, cwe-200]
 description: "Everest Forms versions up to 3.4.8 could leave generated CSV submission artifacts in a public uploads directory after a multi-notification email workflow, exposing form data to unauthenticated requests."
@@ -20,7 +20,7 @@ In the reproduced configuration, one notification created the CSV attachment and
 
 The result was a public artifact containing submitted form data, reachable without authentication through a predictable entry-based filename.
 
-The issue is tracked as **CVE-2026-11571**. The affected product is the **Everest Forms** WordPress plugin, slug `everest-forms`, with affected versions reported as **<= 3.4.8**.
+The issue is tracked as **CVE-2026-11571** and **WPVDB ID `4bd381e9-2f4e-4e61-99af-88f50aed71f5`**. The affected product is the **Everest Forms** WordPress plugin, slug `everest-forms`, with affected versions reported as **<= 3.4.8** in the submitted report and **before 3.5.0** in public advisory metadata.
 
 ## The Vulnerable Workflow
 
@@ -224,18 +224,20 @@ cleanup: runs after both
 
 If the cleanup decision follows the second notification, the first notification's artifact may survive.
 
-## References
-
-- [CVE-2026-11571 — CVE.org](https://www.cve.org/CVERecord?id=CVE-2026-11571)
-- [Everest Forms plugin page](https://wordpress.org/plugins/everest-forms/)
-- [Everest Forms Email Settings documentation](https://docs.everestforms.net/docs/email-settings/)
-- [Everest Forms multiple email notification documentation](https://docs.everestforms.net/docs/how-to-send-multiple-email-notifications/)
-- [WPScan advisory](https://wpscan.com/vulnerability/4bd381e9-2f4e-4e61-99af-88f50aed71f5/)
-
 ## Research Credit
 
 - **Researcher:** Duy Tran
 - **Disclosure:** Responsible disclosure through the WordPress vulnerability ecosystem
+- **Coordinator / advisory source:** WPScan / WPVDB
+
+## References
+
+- [CVE-2026-11571 — CVE.org](https://www.cve.org/CVERecord?id=CVE-2026-11571)
+- [CVE-2026-11571 — NVD / NIST](https://nvd.nist.gov/vuln/detail/CVE-2026-11571)
+- [WPScan / WPVDB advisory](https://wpscan.com/vulnerability/4bd381e9-2f4e-4e61-99af-88f50aed71f5/)
+- [Everest Forms plugin page](https://wordpress.org/plugins/everest-forms/)
+- [Everest Forms Email Settings documentation](https://docs.everestforms.net/docs/email-settings/)
+- [Everest Forms multiple email notification documentation](https://docs.everestforms.net/docs/how-to-send-multiple-email-notifications/)
 
 ## Responsible Disclosure Notice
 
