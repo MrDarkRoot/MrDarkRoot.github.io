@@ -73,7 +73,7 @@ analytics:
 
 # Page views settings
 pageviews:
-  provider: # now only supports 'goatcounter'
+  provider: goatcounter # Chirpy currently supports GoatCounter for per-post page views
 
 # Prefer color scheme setting.
 #
