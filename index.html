@@ -158,6 +158,59 @@ permalink: /
       </div>
     </section>
 
+
+    <section class="landing-section" aria-labelledby="newsfeed-title">
+      <div class="newsfeed-head">
+        <div class="section-head">
+          <p class="section-kicker">Newsfeed</p>
+          <h2 id="newsfeed-title">Latest research, write-ups, and notes.</h2>
+          <p>
+            The original blog feed stays here as the living stream of new research and learning posts.
+          </p>
+        </div>
+
+        <a class="landing-btn landing-btn-secondary" href="{{ '/archives/' | relative_url }}">
+          View Archive
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      {% assign news_posts = site.posts | where_exp: 'item', 'item.hidden != true' %}
+      <div class="newsfeed-list">
+        {% for post in news_posts limit: 8 %}
+          <article class="newsfeed-card">
+            <a class="newsfeed-link" href="{{ post.url | relative_url }}">
+              <div class="newsfeed-meta">
+                <span>
+                  <i class="far fa-calendar fa-fw" aria-hidden="true"></i>
+                  {{ post.date | date: "%b %-d, %Y" }}
+                </span>
+                {% if post.categories.size > 0 %}
+                  <span>
+                    <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+                    {{ post.categories | join: " / " }}
+                  </span>
+                {% endif %}
+              </div>
+
+              <h3>{{ post.title }}</h3>
+
+              {% if post.description %}
+                <p>{{ post.description | strip_html | truncate: 190 }}</p>
+              {% else %}
+                <p>{{ post.excerpt | strip_html | normalize_whitespace | truncate: 190 }}</p>
+              {% endif %}
+
+              <span class="newsfeed-read">
+                Read post
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </span>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
     <section class="landing-section" aria-labelledby="contact-title">
       <div class="cta-block">
         <p class="section-kicker">Security review</p>
