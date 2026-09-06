@@ -1,4 +1,186 @@
 ---
-layout: home
-# Index page
+layout: landing
+title: Application Security Research & Consulting
+description: Independent application security research, source-code review, and authorized security assessment by Duy Tran.
+permalink: /
 ---
+
+<div class="consulting-home">
+  <div class="landing-shell">
+    <section class="landing-section hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Independent Application Security Research</p>
+          <h1 id="hero-title">Security research that starts in the code.</h1>
+          <p class="hero-lead">
+            I’m Duy Tran, an application security researcher focused on source-code review,
+            authorization boundaries, web/API security, and practical vulnerability validation.
+            I work through authorized testing and coordinated disclosure.
+          </p>
+
+          <div class="hero-actions">
+            <a class="landing-btn landing-btn-primary" href="{{ '/research/' | relative_url }}">
+              <i class="fas fa-shield-alt" aria-hidden="true"></i>
+              Explore Research
+            </a>
+            <a class="landing-btn landing-btn-secondary" href="{{ '/contact/' | relative_url }}">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              Work With Me
+            </a>
+          </div>
+        </div>
+
+        <aside class="proof-panel" aria-label="Research proof">
+          <h2>Public evidence</h2>
+          <div class="proof-list">
+            <div class="proof-item">
+              <span class="proof-value">7 CVEs</span>
+              <span class="proof-label">Public vulnerability research and coordinated disclosure.</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-value">Source-first</span>
+              <span class="proof-label">Trust-boundary analysis, code tracing, and controlled runtime validation.</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-value">Authorized only</span>
+              <span class="proof-label">Security testing is limited to approved programs, client scope, and local labs.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="landing-section" aria-labelledby="services-title">
+      <div class="section-head">
+        <p class="section-kicker">What I do</p>
+        <h2 id="services-title">Focused application security work for software teams.</h2>
+        <p>
+          Engagements are scoped around concrete attack surfaces and security questions rather than
+          generic scanner output.
+        </p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card">
+          <span class="service-icon"><i class="fas fa-code" aria-hidden="true"></i></span>
+          <h3>Secure Source-Code Review</h3>
+          <p>
+            Manual and AI-assisted review of security-sensitive code, with emphasis on authorization,
+            data flow, trust boundaries, and exploitable implementation flaws.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <span class="service-icon"><i class="fas fa-globe" aria-hidden="true"></i></span>
+          <h3>Web & API Security Assessment</h3>
+          <p>
+            Targeted testing for broken access control, authentication weaknesses, business-logic flaws,
+            unsafe file handling, and other application-layer risks.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <span class="service-icon"><i class="fas fa-search" aria-hidden="true"></i></span>
+          <h3>Focused Security Review</h3>
+          <p>
+            Review of a feature, patch, architecture decision, or suspected vulnerability when a team
+            needs a narrow technical answer instead of a broad assessment.
+          </p>
+        </article>
+      </div>
+
+      <div class="hero-actions">
+        <a class="landing-btn landing-btn-secondary" href="{{ '/services/' | relative_url }}">
+          View Services
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </section>
+
+    <section class="landing-section" aria-labelledby="research-title">
+      <div class="research-band">
+        <div class="section-head">
+          <p class="section-kicker">Research</p>
+          <h2 id="research-title">Public evidence, not marketing claims.</h2>
+          <p>
+            My research archive documents public vulnerability disclosures, CVE write-ups, technical
+            validation, and the reasoning behind security findings.
+          </p>
+        </div>
+
+        <div class="research-links" aria-label="Research links">
+          <a class="research-link" href="{{ '/research/' | relative_url }}">
+            <span>Security Research</span>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a class="research-link" href="{{ '/academy/' | relative_url }}">
+            <span>AppSec Academy Notes</span>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a class="research-link" href="https://github.com/MrDarkRoot" rel="me">
+            <span>GitHub</span>
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section" aria-labelledby="method-title">
+      <div class="section-head">
+        <p class="section-kicker">Method</p>
+        <h2 id="method-title">Evidence-driven review from boundary to impact.</h2>
+      </div>
+
+      <div class="method-grid">
+        <article class="method-step">
+          <span class="method-number">01</span>
+          <h3>Scope the system</h3>
+          <p>Identify assets, actors, attack surfaces, trust assumptions, and the security question being tested.</p>
+        </article>
+
+        <article class="method-step">
+          <span class="method-number">02</span>
+          <h3>Trace boundaries</h3>
+          <p>Follow attacker-controlled data through authentication, authorization, persistence, and sensitive sinks.</p>
+        </article>
+
+        <article class="method-step">
+          <span class="method-number">03</span>
+          <h3>Validate behavior</h3>
+          <p>Use controlled runtime testing and negative controls to distinguish reachable impact from suspicious code.</p>
+        </article>
+
+        <article class="method-step">
+          <span class="method-number">04</span>
+          <h3>Deliver evidence</h3>
+          <p>Document reproducible findings, affected boundaries, impact, and remediation guidance without unsupported claims.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="landing-section" aria-labelledby="contact-title">
+      <div class="cta-block">
+        <p class="section-kicker">Security review</p>
+        <h2 id="contact-title">Need a focused review of your application or source code?</h2>
+        <p>
+          Send the product or repository context, technology stack, intended scope, and the security
+          questions you want answered.
+        </p>
+
+        <div class="cta-actions">
+          <a class="landing-btn landing-btn-primary" href="mailto:duyytrann22@gmail.com">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            Email Duy
+          </a>
+          <a class="landing-btn landing-btn-secondary" href="{{ '/contact/' | relative_url }}">
+            Contact Details
+          </a>
+        </div>
+
+        <p class="microcopy">
+          Authorized engagements only. Scope and testing boundaries are agreed before active security testing begins.
+        </p>
+      </div>
+    </section>
+  </div>
+</div>
