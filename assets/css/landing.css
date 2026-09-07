@@ -1,5 +1,41 @@
 /* Homepage-only styles for the consulting landing page. */
 
+/* Force the custom homepage shell to use Chirpy's light palette.
+   This prevents a stale/system dark theme state from making the sidebar,
+   topbar, and page background dark while the landing content stays light. */
+body.landing-page {
+  color-scheme: light;
+  --main-bg: #ffffff;
+  --main-border-color: #f3f3f3;
+  --text-color: #34343c;
+  --text-muted-color: #757575;
+  --heading-color: #2a2a2a;
+  --link-color: #0056b2;
+
+  --site-title-color: #717171;
+  --site-subtitle-color: #717171;
+  --sidebar-bg: #f6f8fa;
+  --sidebar-border-color: #efefef;
+  --sidebar-muted-color: #545454;
+  --sidebar-active-color: #1d1d1d;
+  --sidebar-hover-bg: rgba(223, 233, 241, 0.64);
+  --sidebar-btn-bg: #ffffff;
+  --sidebar-btn-color: #8e8e8e;
+  --avatar-border-color: #ffffff;
+
+  --topbar-bg: rgba(255, 255, 255, 0.7);
+  --topbar-text-color: #4e4e4e;
+  --search-border-color: #f0f0f0;
+  --search-icon-color: #c2c6cc;
+  --input-focus-border-color: #b8b8b8;
+}
+
+body.landing-page,
+body.landing-page #main-wrapper {
+  background: var(--main-bg);
+}
+
+
 .landing-main {
   width: 100%;
   max-width: 100%;
