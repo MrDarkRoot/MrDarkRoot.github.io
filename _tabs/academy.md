@@ -38,6 +38,12 @@ permalink: /academy/
     </article>
 
     <article class="academy-card">
+      <h2>Bug Bounty Economics</h2>
+      <p>A researcher-side analysis of shared bounty pools, XP dilution, rejection penalties, opportunity cost, and how compensation mechanics can shape vulnerability research behavior.</p>
+      <a href="/academy/patchstack-vulnerability-research-economics/">Read the Patchstack economics critique →</a>
+    </article>
+
+    <article class="academy-card">
       <h2>Cloud & Virtualization</h2>
       <p>Learn the beginner mental model for virtualization, hypervisors, virtual machines, Docker containers, IaaS, PaaS, SaaS, shared responsibility, cloud monitoring, and common cloud security mistakes.</p>
       <a href="/academy/cloud-virtualization-security-fundamentals/">Read cloud fundamentals →</a>
@@ -45,6 +51,6 @@ permalink: /academy/
   </div>
 
   <div class="academy-note">
-    <strong>Scope:</strong> Application security, PHP, APIs, WordPress plugin security, cloud security fundamentals, and secure engineering notes. Examples are educational and intended for authorized testing and defensive engineering.
+    <strong>Scope:</strong> Application security, PHP, APIs, WordPress plugin security, bug bounty economics, cloud security fundamentals, and secure engineering notes. Examples are educational and intended for authorized testing and defensive engineering.
   </div>
 </div>
