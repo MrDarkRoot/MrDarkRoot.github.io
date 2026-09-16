@@ -1,0 +1,120 @@
+<!-- The Footer -->
+
+<footer
+  aria-label="Site Info"
+  class="
+    d-flex flex-column justify-content-center text-muted
+    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+  "
+>
+  <p>
+    {{- '©' }}
+    <time>{{ 'now' | date: '%Y' }}</time>
+
+    {% if site.social.links %}
+      <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
+    {% else %}
+      <em class="fst-normal">{{ site.social.name }}</em>.
+    {% endif %}
+
+    {% if site.data.locales[include.lang].copyright.brief %}
+      <span
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="{{ site.data.locales[include.lang].copyright.verbose }}"
+      >
+        {{- site.data.locales[include.lang].copyright.brief -}}
+      </span>
+    {% endif %}
+  </p>
+
+  <p>
+    {%- capture _platform -%}
+      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
+    {%- endcapture -%}
+
+    {%- capture _theme -%}
+      <a
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="v{{ theme.version }}"
+        href="https://github.com/cotes2020/jekyll-theme-chirpy"
+        target="_blank"
+        rel="noopener"
+      >Chirpy</a>
+    {%- endcapture -%}
+
+    {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
+  </p>
+</footer>
+
+{% if page.collection == 'posts' %}
+  <a
+    class="research-donate"
+    href="https://buymeacoffee.com/duyytrann2g"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Support my security research on Buy Me a Coffee"
+    title="Support my security research"
+  >
+    <span class="research-donate__icon" aria-hidden="true">☕</span>
+    <span class="research-donate__label">Support my research</span>
+  </a>
+
+  <style>
+    .research-donate {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 5.25rem;
+      z-index: 1040;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .72rem 1rem;
+      border: 1px solid rgba(32, 33, 36, .12);
+      border-radius: 999px;
+      background: #ffdd00;
+      color: #1f2328 !important;
+      font-size: .92rem;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none !important;
+      box-shadow: 0 8px 24px rgba(31, 35, 40, .16);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .research-donate:hover,
+    .research-donate:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(31, 35, 40, .22);
+      color: #1f2328 !important;
+    }
+
+    .research-donate__icon {
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 575.98px) {
+      .research-donate {
+        right: .85rem;
+        bottom: 4.8rem;
+        width: 2.85rem;
+        height: 2.85rem;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .research-donate__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    }
+  </style>
+{% endif %}
