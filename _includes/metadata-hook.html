@@ -2,3 +2,6 @@
 {% if page.layout == 'landing' %}
 <link rel="stylesheet" href="{{ '/assets/css/landing.css' | relative_url }}">
 {% endif %}
+{% if page.url == '/academy/patchstack-vulnerability-research-economics/' %}
+<script defer src="{{ '/assets/js/patchstack-article-map.js' | relative_url }}"></script>
+{% endif %}
