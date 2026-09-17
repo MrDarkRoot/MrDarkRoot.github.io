@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .patchstack-program-comparison__grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: .8rem;
         margin: 1rem 0;
       }
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     note.className = 'patchstack-guideline-snapshot';
     note.setAttribute('aria-label', 'Scope and freshness note');
     note.innerHTML = `
-      <p><strong>Scope & freshness note — September 2026.</strong> This article analyzes the Patchstack Bug Bounty Guidelines and researcher compensation mechanics as they stood in <strong>September 2026</strong>. Patchstack may change the monthly pool, XP formula, multipliers, rejection penalties, eligibility rules, Zeroday criteria, or other program details in the future. Exact figures and mechanics in this article may therefore become outdated; future readers should verify the <a href="https://patchstack.com/articles/bug-bounty-guidelines-rules/" target="_blank" rel="noopener noreferrer">current Patchstack guidelines</a> before relying on them.</p>
+      <p><strong>Scope & freshness note — September 2026.</strong> This article is a snapshot of the Patchstack Bug Bounty Guidelines and researcher compensation mechanics as they stood in <strong>September 2026</strong>. Patchstack can change the monthly pool, XP formula, multipliers, rejection penalties, eligibility rules, Zeroday criteria, reward structure, or other program details at any time. As a result, exact figures and mechanics in this article may become inaccurate in the future. Readers should verify the <a href="https://patchstack.com/articles/bug-bounty-guidelines-rules/" target="_blank" rel="noopener noreferrer">current Patchstack guidelines</a> before relying on any number or rule quoted here.</p>
     `;
 
     if (firstQuote) {
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <p>Those figures are illustrations using the <strong>$10,000 minimum pool</strong>, not predictions of any specific report. The final pool can be larger, the contribution percentage can be higher, rejection adjustments can apply, and Patchstack can choose to award a separate high-impact bounty. The point is narrower: <strong>Critical severity plus hundreds of thousands of installs does not itself guarantee a Critical-sized cash payout when the report remains inside a relative monthly pool.</strong></p>
 
-      <p class="patchstack-critical-payout-risk__note"><a href="" class="patchstack-case-study-placeholder" data-pending="true" aria-disabled="true" title="Reserved for a future MrDarkRoot public write-up">Future MrDarkRoot case study: CVSS 9.8 / 600K+ active installs — write-up link reserved pending public disclosure</a></p>
+      <p class="patchstack-critical-payout-risk__note"><a href="" class="patchstack-case-study-placeholder" data-pending="true" aria-disabled="true" title="Reserved for a future MrDarkRoot public write-up">Future MrDarkRoot write-up: CVSS 9.8 / 600K+ active installs — link intentionally left blank until public disclosure</a></p>
       <p class="patchstack-critical-payout-risk__note">Rule basis: <a href="https://patchstack.com/articles/bug-bounty-guidelines-rules/" target="_blank" rel="noopener noreferrer">Patchstack Bug Bounty Guidelines & Rules</a> (September 2026 snapshot: monthly contribution model, active-install multiplier table, individual high-impact awards, and Zeroday lane).</p>
     `;
 
@@ -178,28 +178,33 @@ document.addEventListener('DOMContentLoaded', () => {
     comparison.className = 'patchstack-program-comparison';
     comparison.setAttribute('aria-labelledby', 'patchstack-program-comparison-title');
     comparison.innerHTML = `
-      <h2 id="patchstack-program-comparison-title">Other major bounty models make the price easier to understand</h2>
+      <h2 id="patchstack-program-comparison-title">Other major bounty models offer cleaner price discovery</h2>
 
-      <p>This comparison is not a claim that Google, Microsoft, or programs hosted on HackerOne are perfect. They still have scope rules, duplicate rules, triage discretion, and eligibility requirements. The narrower point is <strong>price discovery</strong>: many major programs publish per-report reward tables or ranges, so one accepted report is not automatically diluted because unrelated researchers generated more XP during the same month.</p>
+      <p>"Cleaner" here means <strong>easier for a researcher to estimate the value of one qualifying report before doing the work</strong>. It does not mean Google, Microsoft, Wordfence, or every program hosted on HackerOne is perfect. All of them can have scope exclusions, duplicate rules, discretionary triage, and eligibility requirements. The important structural difference is that many of these programs publish per-report reward tables, ranges, or estimators instead of making one report's payout depend on a community-wide monthly XP denominator.</p>
 
       <div class="patchstack-program-comparison__grid">
         <div class="patchstack-program-comparison__card">
           <strong>Google VRPs</strong>
-          <p>Google publishes reward tables keyed to product or project tier, vulnerability category, exploitation scenario, and sometimes report quality. The panel still has discretion and duplicates can be ineligible, but the reward framework is attached to the individual report rather than a community-wide monthly denominator. <a href="https://bughunters.google.com/about/rules/android-friends/google-mobile-vulnerability-reward-program-rules" target="_blank" rel="noopener noreferrer">Official example →</a></p>
+          <p>Google publishes reward tables tied to project tier, vulnerability category, exploitation scenario, impact, and sometimes report quality. For example, its OSS VRP lists explicit per-report ranges for supply-chain and product vulnerabilities by project tier. The reward panel still has discretion and duplicates can be ineligible, but unrelated researchers producing more reports in the same month do not automatically dilute an accepted report through a shared XP pool. <a href="https://bughunters.google.com/about/rules/open-source/google-open-source-software-vulnerability-reward-program-rules" target="_blank" rel="noopener noreferrer">Google OSS VRP rules →</a></p>
         </div>
 
         <div class="patchstack-program-comparison__card">
           <strong>Microsoft bounty programs</strong>
-          <p>Microsoft publishes award ranges and matrices based on security impact, severity, report quality, and program scope. Qualified reports map to stated award bands; they are not priced as a percentage of all researchers' monthly output. <a href="https://www.microsoft.com/en-us/msrc/bounty-guidelines" target="_blank" rel="noopener noreferrer">Official guidelines →</a></p>
+          <p>Microsoft publishes program-specific award ranges and matrices based on impact, severity, report quality, and scope. Its standard award policy and individual program tables give researchers a visible per-report range before submission. Awards remain discretionary, but they are not calculated as a percentage of everybody else's monthly research output. <a href="https://www.microsoft.com/en-us/msrc/bounty-guidelines" target="_blank" rel="noopener noreferrer">Microsoft bounty guidelines →</a></p>
+        </div>
+
+        <div class="patchstack-program-comparison__card">
+          <strong>Wordfence Bug Bounty Program</strong>
+          <p>Wordfence publishes a dedicated bounty program, exposes a <strong>bounty estimator</strong>, and points researchers to a Hall of Fame with real awarded examples. Its current program page advertises rewards up to <strong>$31,200 for Standard Researchers</strong> and <strong>$32,760 for 1337 Researchers</strong>. Whatever one thinks of the exact multipliers, that is much more direct price discovery for a WordPress researcher than waiting for a monthly community denominator to settle. <a href="https://www.wordfence.com/threat-intel/bug-bounty-program/" target="_blank" rel="noopener noreferrer">Wordfence program →</a></p>
         </div>
 
         <div class="patchstack-program-comparison__card">
           <strong>Programs on HackerOne</strong>
-          <p>HackerOne is a platform, not one bounty program, so policies vary by customer. But HackerOne explicitly supports public bounty tables with fixed values or ranges by severity and scope to set expectations and improve consistency. <a href="https://docs.hackerone.com/en/articles/8496276-bounty-tables" target="_blank" rel="noopener noreferrer">HackerOne bounty tables →</a></p>
+          <p>HackerOne is a platform, not a single bounty program, so each customer sets its own policy. HackerOne nevertheless provides public bounty tables specifically so programs can publish fixed values or ranges by severity and scope, set researcher expectations, and improve reward consistency. <a href="https://docs.hackerone.com/en/articles/8496276-bounty-tables" target="_blank" rel="noopener noreferrer">HackerOne bounty tables →</a></p>
         </div>
       </div>
 
-      <p><strong>That is the contrast.</strong> A per-report table can still be strict, discretionary, or unforgiving about duplicates, but the researcher can usually estimate the price of a qualifying finding from the finding itself. Patchstack's September 2026 shared-pool model adds another variable: <em>everyone else's output</em>. That makes the researcher's expected return harder to price before the work is done.</p>
+      <p><strong>That is the comparison.</strong> A per-report model can still be strict, discretionary, and unforgiving about duplicates. But the researcher can usually estimate a qualifying report's value from the report itself. Patchstack's September 2026 shared-pool model adds another pricing variable that the researcher does not control: <em>everyone else's output</em>. From a price-discovery standpoint, that is materially less transparent.</p>
     `;
 
     insertionPoint.insertAdjacentElement('afterend', comparison);
