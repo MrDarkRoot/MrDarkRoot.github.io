@@ -147,6 +147,57 @@ body {
   line-height: 1.55;
 }
 
+/* Critical-vulnerability payout risk callout */
+.patchstack-critical-payout-risk {
+  margin: 1.6rem 0 2.25rem;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid #d7dce4;
+  border-left: .3rem solid #202633;
+  border-radius: .9rem;
+  background: #f8fafc;
+}
+
+.patchstack-critical-payout-risk__eyebrow {
+  margin: 0 0 .25rem !important;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.patchstack-critical-payout-risk h2 {
+  margin: 0 0 .75rem !important;
+  font-size: 1.38rem;
+  line-height: 1.3;
+  color: #202633;
+}
+
+.patchstack-critical-payout-risk__math {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .6rem;
+  margin: 1rem 0;
+}
+
+.patchstack-critical-payout-risk__math code {
+  display: block;
+  padding: .7rem .8rem;
+  border: 1px solid #dce1e8;
+  border-radius: .65rem;
+  background: #fff;
+  color: #202633;
+  font-size: .88rem;
+  text-align: center;
+  white-space: normal;
+}
+
+.patchstack-critical-payout-risk__note {
+  margin-bottom: 0 !important;
+  color: #68717e;
+  font-size: .9rem;
+}
+
 /* Patchstack article visuals */
 .patchstack-brand-logo {
   display: block;
@@ -197,7 +248,8 @@ body {
 }
 
 @media (max-width: 700px) {
-  .patchstack-article-map__grid {
+  .patchstack-article-map__grid,
+  .patchstack-critical-payout-risk__math {
     grid-template-columns: 1fr;
   }
 
@@ -231,7 +283,8 @@ body {
     font-size: 1.5rem;
   }
 
-  .patchstack-article-map {
+  .patchstack-article-map,
+  .patchstack-critical-payout-risk {
     padding: 1rem;
   }
 }
