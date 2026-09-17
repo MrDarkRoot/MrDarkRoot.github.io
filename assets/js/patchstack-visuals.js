@@ -44,13 +44,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .patchstack-program-comparison__card strong {
         display: block;
-        margin-bottom: .35rem;
+        margin-bottom: .55rem;
+        font-size: 1.05rem;
       }
 
       .patchstack-program-comparison__card p {
-        margin: 0;
+        margin: 0 0 .65rem;
         font-size: .92rem;
         line-height: 1.55;
+      }
+
+      .patchstack-program-comparison__card ul {
+        margin: .6rem 0 0;
+        padding-left: 1.15rem;
+      }
+
+      .patchstack-program-comparison__card li {
+        margin: .35rem 0;
+        font-size: .9rem;
+        line-height: 1.5;
+      }
+
+      .patchstack-program-comparison__evidence {
+        margin: 1rem 0 !important;
+        padding: .9rem 1rem;
+        border-left: .25rem solid #202633;
+        background: #fff;
       }
 
       .patchstack-case-study-placeholder[aria-disabled="true"] {
@@ -178,33 +197,41 @@ document.addEventListener('DOMContentLoaded', () => {
     comparison.className = 'patchstack-program-comparison';
     comparison.setAttribute('aria-labelledby', 'patchstack-program-comparison-title');
     comparison.innerHTML = `
-      <h2 id="patchstack-program-comparison-title">Other major bounty models offer cleaner price discovery</h2>
+      <h2 id="patchstack-program-comparison-title">Patchstack vs. Wordfence: same WordPress market, very different pricing</h2>
 
-      <p>"Cleaner" here means <strong>easier for a researcher to estimate the value of one qualifying report before doing the work</strong>. It does not mean Google, Microsoft, Wordfence, or every program hosted on HackerOne is perfect. All of them can have scope exclusions, duplicate rules, discretionary triage, and eligibility requirements. The important structural difference is that many of these programs publish per-report reward tables, ranges, or estimators instead of making one report's payout depend on a community-wide monthly XP denominator.</p>
+      <p>Wordfence is the cleanest comparison because it buys essentially the same kind of asset: vulnerability research in WordPress plugins and themes. Both programs have scope rules, duplicate risk, triage discretion, and quality controls. The important difference is <strong>what gets priced</strong>.</p>
 
       <div class="patchstack-program-comparison__grid">
         <div class="patchstack-program-comparison__card">
-          <strong>Google VRPs</strong>
-          <p>Google publishes reward tables tied to project tier, vulnerability category, exploitation scenario, impact, and sometimes report quality. For example, its OSS VRP lists explicit per-report ranges for supply-chain and product vulnerabilities by project tier. The reward panel still has discretion and duplicates can be ineligible, but unrelated researchers producing more reports in the same month do not automatically dilute an accepted report through a shared XP pool. <a href="https://bughunters.google.com/about/rules/open-source/google-open-source-software-vulnerability-reward-program-rules" target="_blank" rel="noopener noreferrer">Google OSS VRP rules →</a></p>
+          <strong>Patchstack — September 2026</strong>
+          <ul>
+            <li><strong>Pricing unit:</strong> monthly contribution share.</li>
+            <li><strong>Core formula:</strong> your XP / total community XP × monthly pool, then rejection-rate adjustment.</li>
+            <li><strong>Other researchers matter:</strong> more community XP increases the denominator and can reduce the implied cash value of your XP.</li>
+            <li><strong>Critical findings:</strong> a report that does not receive a separate high-impact or Zeroday award can still remain inside the relative monthly pool.</li>
+            <li><strong>Price discovery:</strong> the final value of a report cannot be known from that report alone because monthly total XP and rejection rate also matter.</li>
+          </ul>
+          <p><a href="https://patchstack.com/articles/bug-bounty-guidelines-rules/" target="_blank" rel="noopener noreferrer">Patchstack September 2026 rules →</a></p>
         </div>
 
         <div class="patchstack-program-comparison__card">
-          <strong>Microsoft bounty programs</strong>
-          <p>Microsoft publishes program-specific award ranges and matrices based on impact, severity, report quality, and scope. Its standard award policy and individual program tables give researchers a visible per-report range before submission. Awards remain discretionary, but they are not calculated as a percentage of everybody else's monthly research output. <a href="https://www.microsoft.com/en-us/msrc/bounty-guidelines" target="_blank" rel="noopener noreferrer">Microsoft bounty guidelines →</a></p>
-        </div>
-
-        <div class="patchstack-program-comparison__card">
-          <strong>Wordfence Bug Bounty Program</strong>
-          <p>Wordfence publishes a dedicated bounty program, exposes a <strong>bounty estimator</strong>, and points researchers to a Hall of Fame with real awarded examples. Its current program page advertises rewards up to <strong>$31,200 for Standard Researchers</strong> and <strong>$32,760 for 1337 Researchers</strong>. Whatever one thinks of the exact multipliers, that is much more direct price discovery for a WordPress researcher than waiting for a monthly community denominator to settle. <a href="https://www.wordfence.com/threat-intel/bug-bounty-program/" target="_blank" rel="noopener noreferrer">Wordfence program →</a></p>
-        </div>
-
-        <div class="patchstack-program-comparison__card">
-          <strong>Programs on HackerOne</strong>
-          <p>HackerOne is a platform, not a single bounty program, so each customer sets its own policy. HackerOne nevertheless provides public bounty tables specifically so programs can publish fixed values or ranges by severity and scope, set researcher expectations, and improve reward consistency. <a href="https://docs.hackerone.com/en/articles/8496276-bounty-tables" target="_blank" rel="noopener noreferrer">HackerOne bounty tables →</a></p>
+          <strong>Wordfence — per-vulnerability model</strong>
+          <ul>
+            <li><strong>Pricing unit:</strong> the individual vulnerability.</li>
+            <li><strong>Estimator:</strong> Wordfence provides a bounty estimator so researchers can estimate a finding before submission.</li>
+            <li><strong>Other researchers do not dilute the bounty:</strong> unrelated submissions do not create a community-wide denominator that reduces your accepted report's base payout.</li>
+            <li><strong>Published upside:</strong> up to $31,200 for Standard Researchers and $32,760 for 1337 Researchers, plus documented bonuses.</li>
+            <li><strong>Quality control:</strong> repeated false positives can lead to throttling or bans, but the published model does not apply a monthly rejection-percentage haircut to already accepted individual bounties.</li>
+          </ul>
+          <p><a href="https://www.wordfence.com/threat-intel/bug-bounty-program/" target="_blank" rel="noopener noreferrer">Wordfence Bug Bounty Program →</a></p>
         </div>
       </div>
 
-      <p><strong>That is the comparison.</strong> A per-report model can still be strict, discretionary, and unforgiving about duplicates. But the researcher can usually estimate a qualifying report's value from the report itself. Patchstack's September 2026 shared-pool model adds another pricing variable that the researcher does not control: <em>everyone else's output</em>. From a price-discovery standpoint, that is materially less transparent.</p>
+      <p class="patchstack-program-comparison__evidence"><strong>A concrete 2026 example:</strong> Wordfence publicly documented an unauthenticated account-takeover vulnerability in TranslatePress, affecting more than <strong>400,000 active installations</strong>, with a disclosed bounty of <strong>$975</strong>. The exact amount is not presented here as a universal benchmark; it is useful because the reader can see a real vulnerability, its affected install base, and the individual bounty attached to it. <a href="https://www.wordfence.com/blog/2026/08/400000-wordpress-sites-affected-by-account-takeover-vulnerability-in-translatepress-wordpress-plugin/" target="_blank" rel="noopener noreferrer">See the Wordfence disclosure →</a></p>
+
+      <p>Wordfence has even described its design choice explicitly: its security report says it chose <strong>cash bounties per vulnerability</strong> and criticized competition-based approaches for inadequately rewarding all researchers and encouraging bulk hunting. That is Wordfence's own characterization, not an independent neutral judgment — but it makes the contrast unusually clear. <a href="https://www.wordfence.com/wp-content/uploads/2025/04/2024-Annual-WordPress-Security-Report-by-Wordfence.pdf" target="_blank" rel="noopener noreferrer">Wordfence security report →</a></p>
+
+      <p><strong>This is what I mean by fairer price discovery.</strong> Wordfence can still reject duplicates, enforce scope, and punish low-quality reporting. But an accepted vulnerability is fundamentally priced as <em>that vulnerability</em>. Its bounty is not automatically diluted because unrelated researchers happened to produce more valid reports during the same month. For a researcher deciding whether a difficult WordPress finding is worth days of work, that is a materially cleaner bargain.</p>
     `;
 
     insertionPoint.insertAdjacentElement('afterend', comparison);
