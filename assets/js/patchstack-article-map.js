@@ -5,40 +5,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const article = document.querySelector('.post-content');
   if (!article || document.querySelector('.patchstack-article-map')) return;
 
-  const firstSection = document.getElementById('the-old-bargain-was-simple-find-a-bug-get-paid-for-the-bug');
+  const firstSection = document.getElementById('the-problem-in-one-sentence');
   if (!firstSection) return;
 
   const map = document.createElement('section');
   map.className = 'patchstack-article-map';
   map.setAttribute('aria-label', 'Article summary');
   map.innerHTML = `
-    <p class="patchstack-article-map__eyebrow">The article in four parts</p>
-    <h2 class="patchstack-article-map__title">What this critique is really about</h2>
-    <p class="patchstack-article-map__lead">Four economic risks shape the researcher's side of Patchstack's bounty model.</p>
+    <p class="patchstack-article-map__eyebrow">The critique in four parts</p>
+    <h2 class="patchstack-article-map__title">What Patchstack's model does to researcher economics</h2>
+    <p class="patchstack-article-map__lead">The core argument is not about one bad payout. It is about where cost, risk, and pricing power sit.</p>
 
     <div class="patchstack-article-map__grid">
-      <a class="patchstack-article-map__card" href="#before-the-pool-even-matters-duplicate-risk-can-zero-out-the-entire-project">
+      <a class="patchstack-article-map__card" href="#1-duplicate-risk-means-correct-research-can-still-be-worth-0">
         <span class="patchstack-article-map__number">01</span>
-        <strong>Duplicate risk can erase the payout</strong>
-        <span>You can find a real vulnerability, prove it correctly, and still earn $0 because another researcher got there first.</span>
+        <strong>Researchers absorb the downside</strong>
+        <span>Correct research can still return $0 because duplicate risk sits almost entirely with the researcher.</span>
       </a>
 
-      <a class="patchstack-article-map__card" href="#patchstack-turned-standard-bounty-hunting-into-a-shared-pool-economy">
+      <a class="patchstack-article-map__card" href="#2-the-shared-pool-is-a-cost-control-mechanism-disguised-as-competition">
         <span class="patchstack-article-map__number">02</span>
-        <strong>The shared pool dilutes research value</strong>
-        <span>Your payout depends on your XP relative to everybody else's XP. More supply can make each unit of research worth less.</span>
+        <strong>The pool creates downward pricing pressure</strong>
+        <span>More community XP can dilute the implied value of each unit of research without requiring per-finding cost to scale linearly.</span>
       </a>
 
-      <a class="patchstack-article-map__card" href="#rejection-penalties-change-the-game-from-bug-hunting-into-portfolio-management">
+      <a class="patchstack-article-map__card" href="#4-patchstack-made-the-pricing-mechanics-more-complicated-than-they-need-to-be">
         <span class="patchstack-article-map__number">03</span>
-        <strong>The system shifts risk and QA cost to researchers</strong>
-        <span>Rejection penalties, leaderboard pressure, and pre-submission validation make hunters carry more of the downside.</span>
+        <strong>Marketing is simple; pricing is not</strong>
+        <span>$10K pool, $33K Zeroday, XP and badges are easy to advertise. Expected value takes a rule maze to calculate.</span>
       </a>
 
-      <a class="patchstack-article-map__card" href="#security-researchers-need-to-think-like-businesses">
+      <a class="patchstack-article-map__card" href="#the-conclusion-patchstack-has-optimized-vulnerability-acquisition-not-researcher-economics">
         <span class="patchstack-article-map__number">04</span>
-        <strong>Researchers need to price their labor like a business</strong>
-        <span>CVE credit and XP have value, but deep research still has hours, opportunity cost, and alternative buyers.</span>
+        <strong>The buyer keeps the leverage</strong>
+        <span>Researchers fund discovery and QA; Patchstack controls scoring, penalties, eligibility, the denominator, and downstream reuse.</span>
       </a>
     </div>
   `;
