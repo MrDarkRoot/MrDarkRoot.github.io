@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     styles.id = 'patchstack-economics-extra-styles';
     styles.textContent = `
       .patchstack-guideline-snapshot,
-      .patchstack-program-comparison {
+      .patchstack-program-comparison,
+      .patchstack-september-snapshot {
         margin: 1.7rem 0 2.2rem;
         padding: 1.15rem 1.25rem;
         border: 1px solid #d9dee7;
@@ -17,6 +18,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
       .patchstack-guideline-snapshot {
         border-left: .3rem solid #202633;
+      }
+
+      .patchstack-september-snapshot {
+        border-left: .3rem solid #b42318;
+      }
+
+      .patchstack-september-snapshot h2 {
+        margin-top: 0 !important;
+      }
+
+      .patchstack-september-snapshot__stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: .7rem;
+        margin: 1rem 0;
+      }
+
+      .patchstack-september-snapshot__stat {
+        padding: .85rem;
+        border: 1px solid #dde2ea;
+        border-radius: .75rem;
+        background: #fff;
+      }
+
+      .patchstack-september-snapshot__stat strong {
+        display: block;
+        font-size: 1.35rem;
+        line-height: 1.2;
+      }
+
+      .patchstack-september-snapshot__stat span {
+        display: block;
+        margin-top: .25rem;
+        font-size: .82rem;
+        line-height: 1.35;
+      }
+
+      .patchstack-september-snapshot__math {
+        margin: 1rem 0;
+        padding: .9rem 1rem;
+        border-radius: .7rem;
+        background: #fff;
+        overflow-x: auto;
+      }
+
+      .patchstack-september-snapshot__math code {
+        display: block;
+        white-space: pre-wrap;
       }
 
       .patchstack-guideline-snapshot p,
@@ -78,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       @media (max-width: 800px) {
-        .patchstack-program-comparison__grid {
+        .patchstack-program-comparison__grid,
+        .patchstack-september-snapshot__stats {
           grid-template-columns: 1fr;
         }
       }
@@ -135,6 +185,52 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const headings = [...content.querySelectorAll('h1, h2, h3')];
+
+  const sharedPoolHeading = headings.find((h) =>
+    /Patchstack turned standard bounty hunting into a shared-pool economy/i.test(h.textContent || '')
+  );
+
+  if (sharedPoolHeading && !document.querySelector('.patchstack-september-snapshot')) {
+    let insertionPoint = sharedPoolHeading;
+    let node = sharedPoolHeading.nextElementSibling;
+    while (node && !/^H[12]$/.test(node.tagName)) {
+      insertionPoint = node;
+      node = node.nextElementSibling;
+    }
+
+    const snapshot = document.createElement('section');
+    snapshot.className = 'patchstack-september-snapshot';
+    snapshot.setAttribute('aria-labelledby', 'patchstack-september-snapshot-title');
+    snapshot.innerHTML = `
+      <p class="patchstack-critical-payout-risk__eyebrow">September 2026 leaderboard snapshot</p>
+      <h2 id="patchstack-september-snapshot-title">The denominator is no longer theoretical</h2>
+
+      <p>By the end of September 2026, Patchstack's leaderboard showed <strong>440 total reports</strong>, <strong>137 leaderboard entries</strong>, a displayed <strong>$10,000 monthly pool</strong>, and <strong>14 reports still under review</strong>. These are snapshot figures, not final payout results.</p>
+
+      <div class="patchstack-september-snapshot__stats">
+        <div class="patchstack-september-snapshot__stat"><strong>440</strong><span>Total reports</span></div>
+        <div class="patchstack-september-snapshot__stat"><strong>137</strong><span>Leaderboard entries</span></div>
+        <div class="patchstack-september-snapshot__stat"><strong>$10K</strong><span>Displayed monthly pool</span></div>
+        <div class="patchstack-september-snapshot__stat"><strong>14</strong><span>Reports still under review</span></div>
+      </div>
+
+      <p>The top of the same leaderboard showed <strong>1,563 AXP = 17.71%</strong> and <strong>1,160 AXP = 13.14%</strong>. Because the displayed percentages are rounded, both imply a community denominator of roughly <strong>8.8K AXP</strong>.</p>
+
+      <div class="patchstack-september-snapshot__math" aria-label="Illustrative September 2026 payout calculation">
+        <code>Approx. community AXP ≈ 8,829</code>
+        <code>58 AXP / 8,829 ≈ 0.657%</code>
+        <code>0.657% × $10,000 ≈ $65.70</code>
+      </div>
+
+      <p>So a <strong>58 AXP</strong> finding would correspond to only about <strong>$65–66</strong> from a $10,000 pool if the denominator and pool stayed at this level and no additional adjustment changed the result. That is an illustration of the pool mechanics, not a claim about the final bounty for any specific vulnerability. With 14 reports still being reviewed, the denominator was still capable of moving.</p>
+
+      <p><strong>This is the central criticism in concrete numbers:</strong> a technically severe report can earn meaningful XP and still translate into a double-digit cash amount when hundreds of reports are competing inside the same finite pool.</p>
+
+      <p class="patchstack-critical-payout-risk__note">Source: <a href="https://patchstack.com/database/leaderboard/september-2026" target="_blank" rel="noopener noreferrer">Patchstack September 2026 leaderboard</a>. Snapshot recorded for this article on October 1, 2026; Patchstack may update the page while remaining reports are processed.</p>
+    `;
+
+    insertionPoint.insertAdjacentElement('afterend', snapshot);
+  }
 
   const criticalHeading = headings.find((h) =>
     /A Critical vulnerability no longer guarantees Critical money/i.test(h.textContent || '')
