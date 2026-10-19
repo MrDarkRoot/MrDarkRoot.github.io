@@ -4,7 +4,7 @@ title: About
 icon: fas fa-user
 order: 5
 permalink: /about/
-description: About Duy Tran (MrDarkRoot), an independent application security researcher and security consultant focused on source-code review, web/API security, and open-source vulnerability research.
+description: About Duy Tran (MrDarkRoot), an independent application security researcher focused on source-code analysis, web/API security, and open-source vulnerability research.
 ---
 
 # About Me
@@ -106,19 +106,6 @@ My public vulnerability disclosures, CVE write-ups, and technical research are m
 [View Security Research →]({{ '/research/' | relative_url }})
 
 I keep the detailed disclosure record there so the About page can remain stable as the research portfolio grows.
-
----
-
-## Security Consulting
-
-I also provide focused, authorized application security work for software teams that need a deeper review of a repository, feature, API, patch, or security-sensitive workflow.
-
-Current engagement options are documented on the [Services page]({{ '/services/' | relative_url }}).
-
-Typical work includes secure source-code review, web/API security assessment, and focused technical second opinions.
-
-[View Services →]({{ '/services/' | relative_url }})  
-[Contact Me →]({{ '/contact/' | relative_url }})
 
 ---
 
