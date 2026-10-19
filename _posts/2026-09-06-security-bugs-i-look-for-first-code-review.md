@@ -2,7 +2,7 @@
 title: "The Security Bugs I Look for First When Reviewing a Codebase"
 date: 2026-09-06 12:11:00 +0700
 categories: [Application Security, Secure Code Review]
-tags: [appsec, source-code-review, authorization, trust-boundaries, web-security, api-security, security-consulting]
+tags: [appsec, source-code-review, authorization, trust-boundaries, web-security, api-security, security-research]
 description: "When I review an unfamiliar codebase, I prioritize broken authorization, trust-boundary failures, alternate interfaces, sensitive state transitions, and data-lifecycle mistakes before chasing isolated dangerous functions."
 permalink: /posts/security-bugs-i-look-for-first-when-reviewing-a-codebase/
 ---
@@ -469,9 +469,7 @@ That is often where the most interesting review paths begin.
 
 My public [Security Research](/research/) contains the underlying vulnerability write-ups referenced above.
 
-For software teams that need a focused assessment, I provide [Secure Source-Code Review and Application Security services](/services/) centered on authorization, trust boundaries, data flow, sensitive state transitions, and practical exploitability validation.
-
-If you have a repository, feature, or security-sensitive workflow that needs review, you can [contact me here](/contact/).
+For related public findings and technical disclosures, see the [Security Research page](/research/). Questions about this write-up can be sent through the [contact page](/contact/).
 
 ---
 
