@@ -4,25 +4,16 @@ title: Contact
 icon: fas fa-envelope
 order: 6
 permalink: /contact/
-description: Contact Duy Tran for authorized application security research and consulting.
+description: Contact Duy Tran about public application security research and vulnerability disclosures.
 ---
 
 ## Contact
 
-For authorized application security consulting, source-code review, or a focused security assessment, email:
+For research correspondence, vulnerability disclosures, or questions about published work, email:
 
 **duyytrann22@gmail.com**
 
-When possible, include:
-
-- product or repository context
-- technology stack
-- requested scope
-- available test environment
-- target timeline
-- any known security concerns or constraints
-
-This makes it easier to determine whether the engagement is a good technical fit and to define clear testing boundaries.
+When contacting me about a published finding, please include the relevant page or CVE identifier and any supporting context.
 
 ---
 
@@ -42,4 +33,4 @@ For public vulnerability research and CVE write-ups, see the [Research page]({{ 
 
 I only perform security testing in authorized environments, client-approved scopes, local labs, or public vulnerability-disclosure programs.
 
-For consulting work, active testing should begin only after the target, environment, accounts, and testing boundaries are agreed.
+Security testing is limited to authorized environments, local labs, and public vulnerability-disclosure programs.
